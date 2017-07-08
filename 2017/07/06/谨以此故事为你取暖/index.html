@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yang-f.github.io">
-  <title>FLYING的博客</title>
+  <title>谨以此故事为你取暖 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="素履之行">
+  <meta name="description" content="你抬头看看窗外，天色似乎有点暗了。“我要回去啦！”“不再坐会儿了。”“不了，一会天就黑了，路上不好走。”边说着话套上外套，围上围巾，戴上手套：“走了”打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。“雪还在下呢！”“是啊，路上注意安全！”“嗯！”外面一片银装素裹，鲜有人路过。偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……穿过一片密林，树上的小动物受了惊吓，大块的积">
 <meta name="keywords" content="Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FLYING的博客">
-<meta property="og:url" content="http://yang-f.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谨以此故事为你取暖">
+<meta property="og:url" content="http://yang-f.github.io/2017/07/06/谨以此故事为你取暖/index.html">
 <meta property="og:site_name" content="FLYING的博客">
-<meta property="og:description" content="素履之行">
+<meta property="og:description" content="你抬头看看窗外，天色似乎有点暗了。“我要回去啦！”“不再坐会儿了。”“不了，一会天就黑了，路上不好走。”边说着话套上外套，围上围巾，戴上手套：“走了”打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。“雪还在下呢！”“是啊，路上注意安全！”“嗯！”外面一片银装素裹，鲜有人路过。偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……穿过一片密林，树上的小动物受了惊吓，大块的积">
+<meta property="og:image" content="http://yang-f.github.io/img/1-15112G15949.jpg">
+<meta property="og:updated_time" content="2017-07-08T04:16:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FLYING的博客">
-<meta name="twitter:description" content="素履之行">
+<meta name="twitter:title" content="谨以此故事为你取暖">
+<meta name="twitter:description" content="你抬头看看窗外，天色似乎有点暗了。“我要回去啦！”“不再坐会儿了。”“不了，一会天就黑了，路上不好走。”边说着话套上外套，围上围巾，戴上手套：“走了”打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。“雪还在下呢！”“是啊，路上注意安全！”“嗯！”外面一片银装素裹，鲜有人路过。偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……穿过一片密林，树上的小动物受了惊吓，大块的积">
+<meta name="twitter:image" content="http://yang-f.github.io/img/1-15112G15949.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -168,104 +171,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-ffmpeg-根据时间获取视频帧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-谨以此故事为你取暖" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/ffmpeg-根据时间获取视频帧/">ffmpeg 根据时间获取视频帧</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/08/ffmpeg-根据时间获取视频帧/" class="archive-article-date">
-  	<time datetime="2017-07-08T02:56:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/578994027094864721.png" alt="ffmpeg"></p>
-<p>视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……<br>如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：<br>1，seek到前面最近的一个I帧；<br>2，解码到离所给时间戳最近的视频帧，返回；</p>
-<p>假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int64_t</span> fm_timestamp = input_timestamp/(av_q2d(videoStream-&gt;time_base)*AV_TIME_BASE);</div></pre></td></tr></table></figure></p>
-<p>seek前面最近的I帧，ffmpeg是有提供seek接口的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">av_seek_frame(qFormatCtx,</div><div class="line">              videoStream,</div><div class="line">              fm_timestamp  ,</div><div class="line">              AVSEEK_FLAG_BACKWARD);</div></pre></td></tr></table></figure></p>
-<p>这里有几个选项：<br>
-        
-          <a class="article-more-a" href="/2017/07/08/ffmpeg-根据时间获取视频帧/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ffmpeg</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">avframe</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">keyframe</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/ffmpeg-根据时间获取视频帧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-谨以此故事为你取暖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/谨以此故事为你取暖/">谨以此故事为你取暖</a>
+    <h1 class="article-title" itemprop="name">
+      谨以此故事为你取暖
     </h1>
   
 
@@ -279,367 +192,36 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/img/1-15112G15949.jpg" alt="Golang"> </p>
-<p>你抬头看看窗外，天色似乎有点暗了。<br>“我要回去啦！”<br>“不再坐会儿了。”<br>“不了，一会天就黑了，路上不好走。”<br>边说着话套上外套，围上围巾，戴上手套：<br>“走了”<br>打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。<br>“雪还在下呢！”<br>“是啊，路上注意安全！”<br>“嗯！”<br>外面一片银装素裹，鲜有人路过。<br>偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……<br>穿过一片密林，树上的小动物受了惊吓，大块的积雪簌簌落下来。<br>远远的看到自家屋顶上冒着的炊烟，对着手呵几口气，脚步不自觉加快了些。<br>雪花还在飘，调皮的落在脸上，消失不见，你打个冷战，心想：好冷啊。<br>索性小跑起来，到了家门口，扑落身上的雪花，将门微微打开，探头进去：“我回来啦！”<br>然后迅速钻了进去，将冷气关在门外。<br>瞬间被热情洋溢的暖意包围，睫毛上的雪花融了，眼前却模糊着幸福。<br>火炉烧的旺旺的，不时传来噼噼啪啪木头碎裂的声响，上面放着将开的水壶，咕噜咕噜冒着白气。<br>奶奶坐在火炉旁边，不时的吧几口烟锅，脸上映着炉火的微光，脚下偎着花猫，偶尔蹭下身子喵喵叫几声。<br>
-        
-          <a class="article-more-a" href="/2017/07/06/谨以此故事为你取暖/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随想/" class="article-tag-list-link color3">随想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/谨以此故事为你取暖/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-微服务设计指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/微服务设计指南/">微服务设计指南</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/06/微服务设计指南/" class="archive-article-date">
-  	<time datetime="2017-07-06T04:01:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>单一责任原则（SRP）：为微服务提供有限和重点突出的业务范围，有助于我们满足开发和提供服务的敏捷性。<br>在微服务的设计阶段，我们应该找到各服务的边界，并将其与业务能力（也称为域驱动设计中的有界环境 ）保持一致。<br>微服务设计要确保敏捷/独立开发和部署服务的丝滑稳定。<br>我们的重点应该放在微服务的范围上，而不是使服务更”小”。服务的大小应该是指所需的范围大小，以促进给定的业务能力。<br>与SOA中的服务不同，给定的微服务应该具有很少的操作/功能和简单的消息格式。<br>随着时间的推移，首先开始具有相对广泛的服务边界，重构到较小的服务界限（基于业务需求），这是一个很好的做法。</p>
-<p><a href="http://www.toutiao.com/i6436359163621671426/" target="_blank" rel="external">来源</a></p>
+<p>你抬头看看窗外，天色似乎有点暗了。<br>“我要回去啦！”<br>“不再坐会儿了。”<br>“不了，一会天就黑了，路上不好走。”<br>边说着话套上外套，围上围巾，戴上手套：<br>“走了”<br>打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。<br>“雪还在下呢！”<br>“是啊，路上注意安全！”<br>“嗯！”<br>外面一片银装素裹，鲜有人路过。<br>偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……<br>穿过一片密林，树上的小动物受了惊吓，大块的积雪簌簌落下来。<br>远远的看到自家屋顶上冒着的炊烟，对着手呵几口气，脚步不自觉加快了些。<br>雪花还在飘，调皮的落在脸上，消失不见，你打个冷战，心想：好冷啊。<br>索性小跑起来，到了家门口，扑落身上的雪花，将门微微打开，探头进去：“我回来啦！”<br>然后迅速钻了进去，将冷气关在门外。<br>瞬间被热情洋溢的暖意包围，睫毛上的雪花融了，眼前却模糊着幸福。<br>火炉烧的旺旺的，不时传来噼噼啪啪木头碎裂的声响，上面放着将开的水壶，咕噜咕噜冒着白气。<br>奶奶坐在火炉旁边，不时的吧几口烟锅，脸上映着炉火的微光，脚下偎着花猫，偶尔蹭下身子喵喵叫几声。<br><a id="more"></a><br>爸爸看着电视上的新闻，像是自言自语又像是发表看法：“今年的雪够大的啊！”<br>妈妈在厨房里忙碌，哼着未知却熟悉的旋律。<br>邻居五岁的小朋友张着脏兮兮的手朝你扑过来：“阿姨！阿姨！”<br>你一只手把他架开，一边不服气的用另一只手的食指点这他的脑门：“叫姐姐知道不！”<br>你话没有说完，他却转身追他的纸飞机去了。<br>你揉揉眼睛，将外套搭在衣架上，搬了一只小板凳坐在奶奶旁边，央求她讲过去的故事。<br>爸爸又像是自言自语又像是发表看法：“都是些老掉牙的事！”<br>“我就乐意听，奶奶你快讲，快讲。”<br>奶奶的笑容随着皱纹荡漾开来，讲年轻时和爷爷相恋，讲爸爸小时候。<br>“水开了，丫头！”妈妈在厨房里催促。<br>你不情愿的挪着步子，小心翼翼的取了水壶，将水倒入到暖瓶里，水雾升腾开来，感觉脸颊有些潮湿，视野也变得模糊，却还是稳稳的将暖瓶灌满，盛了生水重新将水壶放到火炉上。<br>刚准备继续听奶奶讲故事，妈妈边摘围裙从厨房里出来喊道：<br>“开饭啦！”</p>
 
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Microservices</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/微服务设计指南/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-github-io博客绑定的域名总被置空" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/05/github-io博客绑定的域名总被置空/">github.io博客绑定的域名总被置空</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/05/github-io博客绑定的域名总被置空/" class="archive-article-date">
-  	<time datetime="2017-07-05T10:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在yourname.github.io的根目录下添加CNAME</p>
-<p>具体就是在Hexo根目录里source文件下添加一个名为CNAME的文件，文件的内容就是需要绑定域名，格式如：<br>yangf.vip<br>添加后再部署的时候，绑定的域名就不会被置空了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CNAME</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/05/github-io博客绑定的域名总被置空/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-实现简单go-web框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/实现简单go-web框架/">实现简单go web框架</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/实现简单go-web框架/" class="archive-article-date">
-  	<time datetime="2017-07-04T07:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/golang.jpg" alt="Golang"><br>使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"github.com/gorilla/mux"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    router = mux.NewRouter().StrictSlash(<span class="literal">true</span>)</div><div class="line">    router.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"/static"</span>)))</div><div class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2017/07/04/实现简单go-web框架/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">rest</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/实现简单go-web框架/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/hello-world/" class="archive-article-date">
-  	<time datetime="2017-07-04T07:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-纯扯淡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/纯扯淡/">纯扯淡</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/纯扯淡/" class="archive-article-date">
-  	<time datetime="2017-07-04T01:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/face.jpg" alt="Golang"> </p>
-<p>早上一出门，抬头看到羽毛在飞，心中窃喜：“呦，下雪啦！”低头一看，是两个大妈在打<br>羽毛球，于是我踩着羽毛球到了云里。云里伸手不见五指，走着走着，面前出现一张脸：<br>“兄弟，见到一辆天鹅没？”<br>我说：“没。”<br>那张脸叹一口气：”路边小解一下，回头看不到座驾了。”<br>“甭急，我帮您找找。”<br>我就往前走啊走，走到云口，看见一小姑娘大咧咧的冲红灯去了，<br>站岗的猫头鹰大叔说：<br>“姑娘不要闯红灯，没素质！”<br>姑娘头一扬，拽拽的说：“我这是素质低，不是没素质，飞蛾扑火你管的着么！”<br>猫头鹰大叔怒了：“好好一只麻雀学什么幺蛾子！”<br>姑娘说：“她是我的偶像，追星关你屁事儿？”<br>红灯大喝一声：“追你妹的星，别学着撞我啊，艹！”<br>直震得云雾散尽，等我缓过神来，远远的看见那张脸准备上鹅，我挥挥手说：“走好啊”<br>继续往前走，走到小湖看见一只姑娘在洗澡，不时的冲我做鬼脸：“你看不到我，看不到我……”<br>我说：“嗨！你好啊。”<br>姑娘吓的羽毛都变了颜色：“艹，臭小子又把我隐身啫喱掉包了，看我回去怎么收拾你！！”<br>扑棱一声飞走了，甩我一脸冰渣子。<br>我把脸摘下来扔水里说：“你先去洗个澡，我一会回来接你。”<br>话没说完，却见它打了辆金枪鱼飞一样跑了，吼着：“老子早他妈不待见你了。”<br>我无奈却不能笑笑，伸手摘了个太阳，刚准备吃下，他说：“不要吃我，我日我日啊”<br>我说：“日你大爷！”仍嘴里，嘎嘣脆辛甜，天色瞬间暗了下来，<br>白胡子月亮提着裤子跑了过来<br>“大侠！嘴下留情啊！”<br>我吐出一个核交给他：“再种一个吧！”<br>
-        
-          <a class="article-more-a" href="/2017/07/04/纯扯淡/#more">more >></a>
-        
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -659,23 +241,87 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/纯扯淡/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yang-f.github.io/2017/07/06/谨以此故事为你取暖/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/08/ffmpeg-根据时间获取视频帧/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ffmpeg 根据时间获取视频帧
+        
+      </div>
+    </a>
   
   
+    <a href="/2017/07/06/微服务设计指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微服务设计指南</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
 
 
           </div>
@@ -700,8 +346,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
