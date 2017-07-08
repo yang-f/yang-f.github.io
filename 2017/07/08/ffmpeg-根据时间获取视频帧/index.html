@@ -202,7 +202,6 @@
 <p>这时候再做解码，找到最近的I帧，就可以得到准确的时间戳对应的视频帧了。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> numBytes = av_image_get_buffer_size(AV_PIX_FMT_YUV422P,</div><div class="line">                                        qCodeCtx-&gt;width,</div><div class="line">                                        qCodeCtx-&gt;height, <span class="number">1</span>);</div><div class="line"></div><div class="line">buffer = (<span class="keyword">uint8_t</span> *)av_malloc(numBytes * <span class="keyword">sizeof</span>(<span class="keyword">uint8_t</span>));</div><div class="line"></div><div class="line">av_image_fill_arrays(qFrameYUV-&gt;data,</div><div class="line">                     qFrameYUV-&gt;linesize,</div><div class="line">                     buffer,</div><div class="line">                     AV_PIX_FMT_YUV422P,</div><div class="line">                     qCodeCtx-&gt;width,</div><div class="line">                     qCodeCtx-&gt;height, <span class="number">1</span>);</div><div class="line"></div><div class="line">qSwsCtx = sws_getContext(qCodeCtx-&gt;width,</div><div class="line">                         qCodeCtx-&gt;height,</div><div class="line">                         qCodeCtx-&gt;pix_fmt,</div><div class="line">                         qCodeCtx-&gt;width,</div><div class="line">                         qCodeCtx-&gt;height,</div><div class="line">                         AV_PIX_FMT_YUV422P,</div><div class="line">                         SWS_BICUBIC, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</div><div class="line"></div><div class="line"><span class="keyword">while</span> (av_read_frame(qFormatCtx, &amp;qPacket) &gt;= <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (qPacket.stream_index == videoStream) &#123;</div><div class="line">        <span class="keyword">int</span> ret = avcodec_send_packet(qCodeCtx, &amp;qPacket);</div><div class="line">        <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</div><div class="line">            NSLog(@<span class="string">"avcodec_send_packet"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        ret = avcodec_receive_frame(qCodeCtx, qFrame);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (ret ==<span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (qFrame-&gt;pts&gt;=[timestamp longLongValue]/(AV_TIME_BASE*av_q2d(stream-&gt;time_base))) &#123;</div><div class="line">                </div><div class="line">                sws_scale(qSwsCtx,</div><div class="line">                          (<span class="keyword">uint8_t</span> <span class="keyword">const</span> * <span class="keyword">const</span> *)qFrame-&gt;data,</div><div class="line">                          qFrame-&gt;linesize, <span class="number">0</span>,</div><div class="line">                          qCodeCtx-&gt;height,</div><div class="line">                          qFrameYUV-&gt;data,</div><div class="line">                          qFrameYUV-&gt;linesize);</div><div class="line">                <span class="comment">//buffer为目标</span></div><div class="line">                av_packet_unref(&amp;qPacket);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    av_packet_unref(&amp;qPacket);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
-
       
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
@@ -230,10 +229,6 @@
           </a>
         </div>
       
-      
-      <span id="busuanzi_container_page_pv" style="color: rgb(221, 221, 221);">
-        阅读<span id="busuanzi_value_page_pv"></span>
-      </span>
     </div>
     <div class="article-info article-info-index">
       
@@ -368,8 +363,9 @@
     		&copy; 2017 FLYING
     	</div>
       <span id="busuanzi_container_site_uv"> 
-        本站访客数<span id="busuanzi_value_site_uv"></span>人次&nbsp;
-        访问量<span id="busuanzi_value_site_pv"></span>
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次&nbsp;--
+        本站访问量<span id="busuanzi_value_site_pv"></span>次&nbsp;--
+        页面访问量<span id="busuanzi_value_page_pv"></span>次
       </span>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
