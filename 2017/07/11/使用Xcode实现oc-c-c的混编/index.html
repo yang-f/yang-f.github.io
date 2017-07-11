@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。首先设置源文件编译方式Build Settings-&amp;gt;Compile Sources As-&amp;gt;According to File Type new">
 <meta property="og:image" content="http://yang-f.github.io/img/235113-140Z111132231.jpg">
-<meta property="og:updated_time" content="2017-07-11T08:28:37.000Z">
+<meta property="og:updated_time" content="2017-07-11T14:30:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Xcode实现oc c++ c的混编">
 <meta name="twitter:description" content="在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。首先设置源文件编译方式Build Settings-&amp;gt;Compile Sources As-&amp;gt;According to File Type new">
@@ -195,7 +195,7 @@
 <p>在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。<br>首先设置源文件编译方式Build Settings-&gt;Compile Sources As-&gt;According to File Type</p>
 <p>new file</p>
 <p>ocProxy.h<br>ocProxy.m<br>ocProxy可以实现oc与c的混编，比如可以调用ffmpeg实现视频解码，如果需要调用c++方法，比如使用dlib做图像处理，就可以调用oc++Proxy里面的接口来实现间接的调用。</p>
-<p>oc++Proxy.h<br>oc++Proxy.mm<br>相反，ocProxy可以实现oc与c++的混编，如果需要调用c方法，就可以调用ocProxy里面的接口来实现间接的调用。</p>
+<p>oc++Proxy.h<br>oc++Proxy.mm<br>相反，oc++Proxy可以实现oc与c++的混编，如果需要调用c方法，就可以调用ocProxy里面的接口来实现间接的调用。</p>
 <p>这样我们就可以实现三种语言的混编了。</p>
 
       
@@ -436,22 +436,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
@@ -473,6 +457,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Object C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
               </li>
              
               <li class="article-tag-list-item">
