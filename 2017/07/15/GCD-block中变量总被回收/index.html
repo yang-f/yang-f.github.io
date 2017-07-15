@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yang-f.github.io">
   <title>GCD block中变量总被回收 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
+  <meta name="description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列12345678__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125">
 <meta name="keywords" content="Xcode,block,内存管理,Object C,ARC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCD block中变量总被回收">
 <meta property="og:url" content="http://yang-f.github.io/2017/07/15/GCD-block中变量总被回收/index.html">
 <meta property="og:site_name" content="FLYING的博客">
-<meta property="og:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
+<meta property="og:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列12345678__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125">
 <meta property="og:image" content="http://yang-f.github.io/img/p220172661.jpg">
-<meta property="og:updated_time" content="2017-07-15T11:43:39.000Z">
+<meta property="og:updated_time" content="2017-07-15T11:54:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GCD block中变量总被回收">
-<meta name="twitter:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
+<meta name="twitter:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列12345678__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125">
 <meta name="twitter:image" content="http://yang-f.github.io/img/p220172661.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
@@ -191,7 +191,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172661.jpg" alt="arc"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
+        <p><img src="/img/p220172661.jpg" alt="arc"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line"><span class="comment">//等待队列执行完毕，访问存储到dict中的对象</span></div><div class="line">...</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
 <p>wtf，继续调查，发现block分为三种：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_NSConcretStackBlock</div><div class="line">_NSConcretGlobalBlock</div><div class="line">_NSConcretMallocBlock</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>按照说明，我们使用的block应该为_NSConcretMallocBlock。然而block中的局部变量虽然被引用，计数器却没有变化，block执行完就释放了。如果单独运行这个block是没问题的，恰恰是如果用了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_async</div></pre></td></tr></table></figure></p>
@@ -436,26 +436,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -476,6 +456,26 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -485,10 +485,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">oc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,6 +501,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
             
             <div class="clearfix"></div>
