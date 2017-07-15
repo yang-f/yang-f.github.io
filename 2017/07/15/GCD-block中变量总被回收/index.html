@@ -6,88 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yang-f.github.io">
-  <title>相册 | FLYING的博客</title>
+  <title>GCD block中变量总被回收 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=".hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3">
-<meta name="keywords" content="Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="http://yang-f.github.io/photos/index.html">
+  <meta name="description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
+<meta name="keywords" content="Xcode,block,内存管理,Object C,ARC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCD block中变量总被回收">
+<meta property="og:url" content="http://yang-f.github.io/2017/07/15/GCD-block中变量总被回收/index.html">
 <meta property="og:site_name" content="FLYING的博客">
-<meta property="og:description" content=".hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2201727556.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/psb.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2201726591.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2201725929.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2194986013.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2194985982.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2181579284.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2181579112.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2181578937.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2201728454.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2181578841.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172665.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2180865963.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172670.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2180516861.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172655.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172656.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172659.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172660.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
+<meta property="og:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
 <meta property="og:image" content="http://yang-f.github.io/img/p220172661.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172662.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172663.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172666.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172667.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172669.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172668.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172671.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172672.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172673.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172657.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172658.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172664.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2180516785.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
-<meta property="og:image" content="http://yang-f.github.io/img/p2180516124.jpg">
-<meta property="og:updated_time" content="2017-07-09T05:45:57.000Z">
+<meta property="og:updated_time" content="2017-07-15T11:43:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content=".hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3">
-<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif">
+<meta name="twitter:title" content="GCD block中变量总被回收">
+<meta name="twitter:description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列123456__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125;)">
+<meta name="twitter:image" content="http://yang-f.github.io/img/p220172661.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -238,90 +171,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-GCD-block中变量总被回收" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      相册
+      GCD block中变量总被回收
     </h1>
   
 
+        
+        <a href="/2017/07/15/GCD-block中变量总被回收/" class="archive-article-date">
+  	<time datetime="2017-07-15T03:10:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
+</a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><link href="/static/css/lightbox.css" rel="stylesheet"><script src="/static/js/lightbox.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3%;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:0px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style><figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2201727556.jpg" data-lightbox="/img/p2201727556.jpg" data-title="光影"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2201727556.jpg"></a><noscript><img src="/img/p2201727556.jpg"></noscript><figcaption itemprop="description">光影
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/psb.jpg" data-lightbox="/img/psb.jpg" data-title="揽月"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/psb.jpg"></a><noscript><img src="/img/psb.jpg"></noscript><figcaption itemprop="description">揽月
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2201726591.jpg" data-lightbox="/img/p2201726591.jpg" data-title="U"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2201726591.jpg"></a><noscript><img src="/img/p2201726591.jpg"></noscript><figcaption itemprop="description">U
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2201725929.jpg" data-lightbox="/img/p2201725929.jpg" data-title="向日葵"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2201725929.jpg"></a><noscript><img src="/img/p2201725929.jpg"></noscript><figcaption itemprop="description">向日葵
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2194986013.jpg" data-lightbox="/img/p2194986013.jpg" data-title="光影"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2194986013.jpg"></a><noscript><img src="/img/p2194986013.jpg"></noscript><figcaption itemprop="description">光影
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2194985982.jpg" data-lightbox="/img/p2194985982.jpg" data-title="我喜欢这斑驳的光影 就像喜欢这斑驳的人生"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2194985982.jpg"></a><noscript><img src="/img/p2194985982.jpg"></noscript><figcaption itemprop="description">我喜欢这斑驳的光影 就像喜欢这斑驳的人生
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2181579284.jpg" data-lightbox="/img/p2181579284.jpg" data-title="五大道"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2181579284.jpg"></a><noscript><img src="/img/p2181579284.jpg"></noscript><figcaption itemprop="description">五大道
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2181579112.jpg" data-lightbox="/img/p2181579112.jpg" data-title="花"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2181579112.jpg"></a><noscript><img src="/img/p2181579112.jpg"></noscript><figcaption itemprop="description">花
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2181578937.jpg" data-lightbox="/img/p2181578937.jpg" data-title="..."><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2181578937.jpg"></a><noscript><img src="/img/p2181578937.jpg"></noscript><figcaption itemprop="description">…
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2201728454.jpg" data-lightbox="/img/p2201728454.jpg" data-title="不起眼"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2201728454.jpg"></a><noscript><img src="/img/p2201728454.jpg"></noscript><figcaption itemprop="description">不起眼
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2181578841.jpg" data-lightbox="/img/p2181578841.jpg" data-title="盛开"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2181578841.jpg"></a><noscript><img src="/img/p2181578841.jpg"></noscript><figcaption itemprop="description">盛开
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172665.jpg" data-lightbox="/img/p220172665.jpg" data-title="FLYING"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172665.jpg"></a><noscript><img src="/img/p220172665.jpg"></noscript><figcaption itemprop="description">FLYING
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2180865963.jpg" data-lightbox="/img/p2180865963.jpg" data-title="热烈"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2180865963.jpg"></a><noscript><img src="/img/p2180865963.jpg"></noscript><figcaption itemprop="description">热烈
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172670.jpg" data-lightbox="/img/p220172670.jpg" data-title="春"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172670.jpg"></a><noscript><img src="/img/p220172670.jpg"></noscript><figcaption itemprop="description">春
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2180516861.jpg" data-lightbox="/img/p2180516861.jpg" data-title="随风"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2180516861.jpg"></a><noscript><img src="/img/p2180516861.jpg"></noscript><figcaption itemprop="description">随风
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172655.jpg" data-lightbox="/img/p220172655.jpg" data-title="梦影"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172655.jpg"></a><noscript><img src="/img/p220172655.jpg"></noscript><figcaption itemprop="description">梦影
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172656.jpg" data-lightbox="/img/p220172656.jpg" data-title="吃鱼的日子不吃肉"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172656.jpg"></a><noscript><img src="/img/p220172656.jpg"></noscript><figcaption itemprop="description">吃鱼的日子不吃肉
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172659.jpg" data-lightbox="/img/p220172659.jpg" data-title="邂逅"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172659.jpg"></a><noscript><img src="/img/p220172659.jpg"></noscript><figcaption itemprop="description">邂逅
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172660.jpg" data-lightbox="/img/p220172660.jpg" data-title="远方"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172660.jpg"></a><noscript><img src="/img/p220172660.jpg"></noscript><figcaption itemprop="description">远方
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172661.jpg" data-lightbox="/img/p220172661.jpg" data-title="烟花"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172661.jpg"></a><noscript><img src="/img/p220172661.jpg"></noscript><figcaption itemprop="description">烟花
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172662.jpg" data-lightbox="/img/p220172662.jpg" data-title="花田"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172662.jpg"></a><noscript><img src="/img/p220172662.jpg"></noscript><figcaption itemprop="description">花田
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172663.jpg" data-lightbox="/img/p220172663.jpg" data-title="唇红齿白"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172663.jpg"></a><noscript><img src="/img/p220172663.jpg"></noscript><figcaption itemprop="description">唇红齿白
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172666.jpg" data-lightbox="/img/p220172666.jpg" data-title="窗"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172666.jpg"></a><noscript><img src="/img/p220172666.jpg"></noscript><figcaption itemprop="description">窗
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172667.jpg" data-lightbox="/img/p220172667.jpg" data-title="出发"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172667.jpg"></a><noscript><img src="/img/p220172667.jpg"></noscript><figcaption itemprop="description">出发
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172669.jpg" data-lightbox="/img/p220172669.jpg" data-title="遇"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172669.jpg"></a><noscript><img src="/img/p220172669.jpg"></noscript><figcaption itemprop="description">遇
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172668.jpg" data-lightbox="/img/p220172668.jpg" data-title="绿肥红瘦"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172668.jpg"></a><noscript><img src="/img/p220172668.jpg"></noscript><figcaption itemprop="description">绿肥红瘦
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172671.jpg" data-lightbox="/img/p220172671.jpg" data-title="曙光"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172671.jpg"></a><noscript><img src="/img/p220172671.jpg"></noscript><figcaption itemprop="description">曙光
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172672.jpg" data-lightbox="/img/p220172672.jpg" data-title="春"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172672.jpg"></a><noscript><img src="/img/p220172672.jpg"></noscript><figcaption itemprop="description">春
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172673.jpg" data-lightbox="/img/p220172673.jpg" data-title="不夜"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172673.jpg"></a><noscript><img src="/img/p220172673.jpg"></noscript><figcaption itemprop="description">不夜
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172657.jpg" data-lightbox="/img/p220172657.jpg" data-title="时间的印记"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172657.jpg"></a><noscript><img src="/img/p220172657.jpg"></noscript><figcaption itemprop="description">时间的印记
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172658.jpg" data-lightbox="/img/p220172658.jpg" data-title="流年"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172658.jpg"></a><noscript><img src="/img/p220172658.jpg"></noscript><figcaption itemprop="description">流年
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p220172664.jpg" data-lightbox="/img/p220172664.jpg" data-title="八爪鱼"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p220172664.jpg"></a><noscript><img src="/img/p220172664.jpg"></noscript><figcaption itemprop="description">八爪鱼
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2180516785.jpg" data-lightbox="/img/p2180516785.jpg" data-title="秋"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2180516785.jpg"></a><noscript><img src="/img/p2180516785.jpg"></noscript><figcaption itemprop="description">秋
-</figcaption></figure>
-<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="/img/p2180516124.jpg" data-lightbox="/img/p2180516124.jpg" data-title="雨外"><img itemprop="thumbnail" class="reward-img hexo-image-steam-lazy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="/img/p2180516124.jpg"></a><noscript><img src="/img/p2180516124.jpg"></noscript><figcaption itemprop="description">雨外
-</figcaption></figure></div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
+        <p><img src="/img/p220172661.jpg" alt="arc"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
+<p>wtf，继续调查，发现block分为三种：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_NSConcretStackBlock</div><div class="line">_NSConcretGlobalBlock</div><div class="line">_NSConcretMallocBlock</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>按照说明，我们使用的block应该为_NSConcretMallocBlock。然而block中的局部变量虽然被引用，计数器却没有变化，block执行完就释放了。如果单独运行这个block是没问题的，恰恰是如果用了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_async</div></pre></td></tr></table></figure></p>
+<p>反而好像一切都失效了，不知道是不是ARC在多线程管理内存上的保守机制，所以我的解决方案是，强行将引用的变量的计数器+1:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">    CFRetain((__bridge CFTypeRef)(obj));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>不知道算不算的上最优的解决办法，希望对遇到同类问题的人有用。</p>
 
       
       
@@ -355,7 +230,45 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Xcode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">block</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Object C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -405,7 +318,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yang-f.github.io/photos/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yang-f.github.io/2017/07/15/GCD-block中变量总被回收/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -417,6 +330,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/11/使用Xcode实现oc-c-c的混编/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用Xcode实现oc c++ c的混编</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -447,7 +370,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
