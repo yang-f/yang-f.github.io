@@ -170,6 +170,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-改变四通道图片的宽高，节省内存开销" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/09/改变四通道图片的宽高，节省内存开销/">改变四通道图片的宽高，节省内存开销</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/09/改变四通道图片的宽高，节省内存开销/" class="archive-article-date">
+  	<time datetime="2017-08-09T14:21:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/p2201728454.jpg" alt="宽高"> </p>
+<p>有时候我们需要将大量的图片放到内存里面，但是又不想占用太多内存。比如实现进度条拖拽流畅的正播倒播，只能先把视频帧解码之后放到内存中才能实现。如果是原始图片大小，假设为1280*720的图片，4通道，我们可以简单估算一下时长一分钟帧率为24视频解码之后所占内存的大小：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">60</span>*<span class="number">24</span>*(<span class="number">1280</span>*<span class="number">720</span>*<span class="number">4</span>/<span class="number">8</span>)/<span class="number">1024</span> kB = <span class="number">648000</span> kB = <span class="number">632</span> MB</div></pre></td></tr></table></figure></p>
+<p>632 MB 的内存对于PC端好像还可以接受，但是对于移动端来说就显得弥足珍贵了，如果对图片的质量要求不要太高，我们可以改变图片的宽高来实现节省内存的目的，比如宽高都变为一半，就可以将内存占用将为原来的1/4，这可是相当可观的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> channel = <span class="number">4</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height; i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span> &amp;&amp; j%<span class="number">2</span>==<span class="number">0</span>)&#123;</div><div class="line">            mini_buffer[((i * width * channel)&gt;&gt;<span class="number">2</span>) + ((j * channel)&gt;&gt;<span class="number">1</span>)] </div><div class="line">                    = buffer[i * width * channel + j * channel];</div><div class="line">            mini_buffer[((i * width * channel)&gt;&gt;<span class="number">2</span>) + ((j * channel)&gt;&gt;<span class="number">1</span>) + <span class="number">1</span>] </div><div class="line">                    = buffer[i * width * channel + j * channel + <span class="number">1</span>];</div><div class="line">            mini_buffer[((i * width * channel)&gt;&gt;<span class="number">2</span>) + ((j * channel)&gt;&gt;<span class="number">1</span>) + <span class="number">2</span>] </div><div class="line">                    = buffer[i * width * channel + j * channel + <span class="number">2</span>];</div><div class="line">            mini_buffer[((i * width * channel)&gt;&gt;<span class="number">2</span>) + ((j * channel)&gt;&gt;<span class="number">2</span>) + <span class="number">3</span>] </div><div class="line">                    = buffer[i * width * channel + j * channel + <span class="number">3</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然你可以采用cv_resize，如果条件允许的话。</p>
+
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">rgba</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">压缩</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图片</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/09/改变四通道图片的宽高，节省内存开销/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-iOS应用抓包（http、https）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -843,89 +927,6 @@
 
 
   
-    <article id="post-实现简单go-web框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/实现简单go-web框架/">实现简单go web框架</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/实现简单go-web框架/" class="archive-article-date">
-  	<time datetime="2017-07-04T07:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/golang.jpg" alt="Golang"><br>使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"github.com/gorilla/mux"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    router = mux.NewRouter().StrictSlash(<span class="literal">true</span>)</div><div class="line">    router.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"/static"</span>)))</div><div class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2017/07/04/实现简单go-web框架/#more">more >></a>
-        
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">rest</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/实现简单go-web框架/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1024,10 +1025,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -1048,11 +1045,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1072,6 +1065,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -1081,10 +1082,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">oc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1101,6 +1098,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rgba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">压缩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
             
             <div class="clearfix"></div>
