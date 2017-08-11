@@ -170,6 +170,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-多线程解码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/11/多线程解码/">多线程解码</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/11/多线程解码/" class="archive-article-date">
+  	<time datetime="2017-08-11T08:01:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/p220172662.jpg" alt="花田"> </p>
+<p>最近在做视频解码相关的工作，有一个功能需要将整个视频解码之后放到内存里面，经测试，一分钟的视频解码需要20s，不算太理想，考虑用多线程来实现。<br>基本思路是获取所有关键帧信息，然后开启不同的线程来从不同的关键帧开始解码。</p>
+<p>1，获取所有关键帧信息，获取所有的关键帧时间戳，大约会花费0.2s：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">+ (NSMutableArray *)keyFramePtsWithM3u8Path:(NSString *)path&#123;</div><div class="line">    NSMutableArray *timestamp_array = [[NSMutableArray alloc] init];</div><div class="line">    canceled = <span class="literal">false</span>;</div><div class="line">    AVFormatContext *qFormatCtx = <span class="literal">NULL</span>;</div><div class="line">    AVCodecContext *qCodeCtx = <span class="literal">NULL</span>;</div><div class="line">    AVCodec *qCodec = <span class="literal">NULL</span>;</div><div class="line">    AVPacket qPacket;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">SwsContext</span> *<span class="title">qSwsCtx</span>;</span></div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = [path UTF8String];</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (filePath == nil) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    av_register_all();</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (avformat_open_input(&amp;qFormatCtx, filePath, <span class="literal">NULL</span>, <span class="literal">NULL</span>) != <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (avformat_find_stream_info(qFormatCtx, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    av_dump_format(qFormatCtx, <span class="number">0</span>, filePath, <span class="number">0</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> videoStream = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; qFormatCtx-&gt;nb_streams;i++) &#123;</div><div class="line">        <span class="keyword">if</span> (qFormatCtx-&gt;streams[i]-&gt;codecpar-&gt;codec_type == AVMEDIA_TYPE_VIDEO) &#123;</div><div class="line">            videoStream = i;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (videoStream == <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    qCodeCtx = avcodec_alloc_context3(<span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">if</span> (avcodec_parameters_to_context(qCodeCtx, qFormatCtx-&gt;streams[videoStream]-&gt;codecpar) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    qCodec = avcodec_find_decoder(qCodeCtx-&gt;codec_id);</div><div class="line">    <span class="keyword">if</span> (qCodeCtx == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (avcodec_open2(qCodeCtx, qCodec, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    qSwsCtx = sws_getContext(qCodeCtx-&gt;width,</div><div class="line">                             qCodeCtx-&gt;height,</div><div class="line">                             qCodeCtx-&gt;pix_fmt,</div><div class="line">                             qCodeCtx-&gt;width,</div><div class="line">                             qCodeCtx-&gt;height,</div><div class="line">                             AV_PIX_FMT_RGBA,</div><div class="line">                             SWS_BICUBIC, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">while</span> (av_read_frame(qFormatCtx, &amp;qPacket) &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (qPacket.stream_index == videoStream) &#123;</div><div class="line">            <span class="keyword">if</span>(canceled)&#123;</div><div class="line">                av_packet_unref(&amp;qPacket);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qPacket.flags==<span class="number">1</span>)&#123;</div><div class="line">                [timestamp_array addObject:[NSString stringWithFormat:@<span class="string">"%lld"</span>,qPacket.pts]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        av_packet_unref(&amp;qPacket);</div><div class="line">    &#125;</div><div class="line">    sws_freeContext(qSwsCtx);</div><div class="line">    avcodec_close(qCodeCtx);</div><div class="line">    avformat_close_input(&amp;qFormatCtx);</div><div class="line">    <span class="keyword">return</span> timestamp_array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/08/11/多线程解码/#more">more >></a>
+        
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ffmpeg</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">decode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">object-c</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/11/多线程解码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-改变四通道图片的宽高，节省内存开销" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -854,76 +943,6 @@
 
 
   
-    <article id="post-github-io博客绑定的域名总被置空" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/05/github-io博客绑定的域名总被置空/">github.io博客绑定的域名总被置空</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/05/github-io博客绑定的域名总被置空/" class="archive-article-date">
-  	<time datetime="2017-07-05T10:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在yourname.github.io的根目录下添加CNAME</p>
-<p>具体就是在Hexo根目录里source文件下添加一个名为CNAME的文件，文件的内容就是需要绑定域名，格式如：<br>yangf.vip<br>添加后再部署的时候，绑定的域名就不会被置空了。</p>
-
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CNAME</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/05/github-io博客绑定的域名总被置空/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1022,22 +1041,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -1055,6 +1058,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ARC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,7 +1101,31 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">decode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">object-c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rgba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">压缩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图片</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1099,18 +1142,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rgba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">压缩</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图片</a>
               </li>
             
             <div class="clearfix"></div>
