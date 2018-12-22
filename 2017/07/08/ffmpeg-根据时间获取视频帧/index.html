@@ -5,22 +5,22 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yang-f.github.io">
+  <link rel="dns-prefetch" href="https://yang-f.github.io">
   <title>ffmpeg 根据时间获取视频帧 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：1，seek到前面最近的一个I帧；2，解码到离所给时间戳最近的视频帧，返回； 假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：1int64_t fm_timestamp = input_timestamp/(av">
 <meta name="keywords" content="ffmpeg,frame,avframe,keyframe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ffmpeg 根据时间获取视频帧">
-<meta property="og:url" content="http://yang-f.github.io/2017/07/08/ffmpeg-根据时间获取视频帧/index.html">
+<meta property="og:url" content="https://yang-f.github.io/2017/07/08/ffmpeg-根据时间获取视频帧/index.html">
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：1，seek到前面最近的一个I帧；2，解码到离所给时间戳最近的视频帧，返回； 假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：1int64_t fm_timestamp = input_timestamp/(av">
-<meta property="og:image" content="http://yang-f.github.io/img/578994027094864721.png">
+<meta property="og:image" content="https://yang-f.github.io/img/578994027094864721.png">
 <meta property="og:updated_time" content="2017-07-08T03:55:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ffmpeg 根据时间获取视频帧">
 <meta name="twitter:description" content="视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：1，seek到前面最近的一个I帧；2，解码到离所给时间戳最近的视频帧，返回； 假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：1int64_t fm_timestamp = input_timestamp/(av">
-<meta name="twitter:image" content="http://yang-f.github.io/img/578994027094864721.png">
+<meta name="twitter:image" content="https://yang-f.github.io/img/578994027094864721.png">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -323,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yang-f.github.io/2017/07/08/ffmpeg-根据时间获取视频帧/" alt="微信分享二维码">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yang-f.github.io/2017/07/08/ffmpeg-根据时间获取视频帧/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -470,22 +470,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
@@ -499,6 +483,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
               </li>
              
               <li class="article-tag-list-item">
