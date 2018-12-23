@@ -5,22 +5,22 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://yang-f.github.io">
+  <link rel="dns-prefetch" href="http://yang-f.github.io">
   <title>使用Xcode实现oc c++ c的混编 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。首先设置源文件编译方式Build Settings-&amp;gt;Compile Sources As-&amp;gt;According to File Type new">
 <meta name="keywords" content="Xcode,Object C,c++,c,oc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Xcode实现oc c++ c的混编">
-<meta property="og:url" content="https://yang-f.github.io/2017/07/11/使用Xcode实现oc-c-c的混编/index.html">
+<meta property="og:url" content="http://yang-f.github.io/2017/07/11/使用Xcode实现oc-c-c的混编/index.html">
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。首先设置源文件编译方式Build Settings-&amp;gt;Compile Sources As-&amp;gt;According to File Type new">
-<meta property="og:image" content="https://yang-f.github.io/img/235113-140Z111132231.jpg">
+<meta property="og:image" content="http://yang-f.github.io/img/235113-140Z111132231.jpg">
 <meta property="og:updated_time" content="2017-07-15T11:44:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Xcode实现oc c++ c的混编">
 <meta name="twitter:description" content="在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。首先设置源文件编译方式Build Settings-&amp;gt;Compile Sources As-&amp;gt;According to File Type new">
-<meta name="twitter:image" content="https://yang-f.github.io/img/235113-140Z111132231.jpg">
+<meta name="twitter:image" content="http://yang-f.github.io/img/235113-140Z111132231.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -325,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yang-f.github.io/2017/07/11/使用Xcode实现oc-c-c的混编/" alt="微信分享二维码">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yang-f.github.io/2017/07/11/使用Xcode实现oc-c-c的混编/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -472,7 +472,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,19 +504,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,6 +540,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -549,10 +553,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
             
             <div class="clearfix"></div>
