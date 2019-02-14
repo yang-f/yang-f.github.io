@@ -9,7 +9,7 @@
   <title>GCD block中变量总被回收 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列12345678__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];dispatch_async(queue, ^&amp;#123;    NSObject *obj = ...;    [dict setObject:obj forKey:@&quot;xxx&quot;];&amp;#125">
-<meta name="keywords" content="Xcode,block,内存管理,Object C,ARC">
+<meta name="keywords" content="Xcode,Object C,block,内存管理,ARC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCD block中变量总被回收">
 <meta property="og:url" content="http://yang-f.github.io/2017/07/15/GCD-block中变量总被回收/index.html">
@@ -56,7 +56,7 @@
 		  <h1 class="header-author"><a href="/">FLYING</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">初九：素履，往，无咎。</p>
+		<p class="header-subtitle">初九：素履，往无咎。</p>
 		
 
 		<nav class="header-menu">
@@ -71,6 +71,8 @@
 				<li><a href="/photos/">摄影</a></li>
 	        
 				<li><a href="https://slzhix.taobao.com">店铺</a></li>
+	        
+				<li><a href="https://www.geekbang.org">极客时间</a></li>
 	        
 				<li><a href="https://developers.google.cn/machine-learning/crash-course">机器学习课程</a></li>
 	        
@@ -120,9 +122,11 @@
 			  <h1 class="header-author js-header-author">FLYING</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>初九：素履，往，无咎。<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>初九：素履，往无咎。<i class="icon icon-quo-right"></i></p>
 			
 			
+			
+				
 			
 				
 			
@@ -152,17 +156,19 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
+					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/categories/技术/">技术</a></li>
+					<li style="width: 14.285714285714286%"><a href="/categories/技术/">技术</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/categories/随笔/">随笔</a></li>
+					<li style="width: 14.285714285714286%"><a href="/categories/随笔/">随笔</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/photos/">摄影</a></li>
+					<li style="width: 14.285714285714286%"><a href="/photos/">摄影</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="https://slzhix.taobao.com">店铺</a></li>
+					<li style="width: 14.285714285714286%"><a href="https://slzhix.taobao.com">店铺</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="https://developers.google.cn/machine-learning/crash-course">机器学习课程</a></li>
+					<li style="width: 14.285714285714286%"><a href="https://www.geekbang.org">极客时间</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="https://developers.google.cn/machine-learning/crash-course">机器学习课程</a></li>
 		        
 				</ul>
 			</nav>
@@ -245,15 +251,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Object C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">block</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Object C</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -453,26 +459,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">block</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Object C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
@@ -517,6 +503,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -526,6 +516,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">oc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Object C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,6 +535,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -553,7 +551,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
+                <a href="javascript:void(0)" class="js-tag color1">block</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARC</a>
               </li>
             
             <div class="clearfix"></div>
@@ -603,10 +609,6 @@
     	<section class="tools-section tools-section-friends" q-show="friends">
   		
         <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://shangfan.la" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>上饭啦</a>
-            </li>
           
             <li class="search-li">
               <a href="http://wsl-victor.github.io" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>victor</a>
