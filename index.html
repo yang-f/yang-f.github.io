@@ -212,7 +212,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p2201726591.jpg" alt="花田"> </p>
+        <p><img src="/img/p2201726591.jpg" alt="FLYING"> </p>
 <p>  最近实现了一个挺有意思的功能。这里来记录一下。<br>  需求：根据用户条件筛选出可用数据。</p>
 <p>  比如，有几条个人信息的数据，A用户想看到的数据是男性用户，B用户想看到的数女性用户，C用户想看到的是年龄大于30的女性用户，等等、、、<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">性别：男，年龄：28，居住地：北京；</div><div class="line">性别：女，年龄：23，居住地：杭州；</div><div class="line">性别：未知，年龄：16，居住地：济南；</div></pre></td></tr></table></figure></p>
 <p>  一开始的想法是，为每个用户对应个人信息字段添加一个标示或者多个标示，作为过滤条件。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A 性别：男，年龄上限：无，年龄下限：无，居住地：无，</div><div class="line">B 性别：女，年龄上限：无，年龄下限：无，居住地：无，</div><div class="line">C 性别：女，年龄上限：无，年龄下限：30，居住地：无，</div></pre></td></tr></table></figure></p>
@@ -302,7 +302,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172662.jpg" alt="花田"> </p>
+        <p><img src="/img/p220172662.jpg" alt="FLYING"> </p>
 <p>最近在做视频解码相关的工作，有一个功能需要将整个视频解码之后放到内存里面，经测试，一分钟的视频解码需要20s，不算太理想，考虑用多线程来实现。<br>基本思路是获取所有关键帧信息，然后开启不同的线程来从不同的关键帧开始解码。</p>
 <p>1，获取所有关键帧信息，获取所有的关键帧时间戳，大约会花费0.2s：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">+ (NSMutableArray *)keyFramePtsWithM3u8Path:(NSString *)path&#123;</div><div class="line">    NSMutableArray *timestamp_array = [[NSMutableArray alloc] init];</div><div class="line">    canceled = <span class="literal">false</span>;</div><div class="line">    AVFormatContext *qFormatCtx = <span class="literal">NULL</span>;</div><div class="line">    AVCodecContext *qCodeCtx = <span class="literal">NULL</span>;</div><div class="line">    AVCodec *qCodec = <span class="literal">NULL</span>;</div><div class="line">    AVPacket qPacket;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">SwsContext</span> *<span class="title">qSwsCtx</span>;</span></div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = [path UTF8String];</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (filePath == nil) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    av_register_all();</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (avformat_open_input(&amp;qFormatCtx, filePath, <span class="literal">NULL</span>, <span class="literal">NULL</span>) != <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (avformat_find_stream_info(qFormatCtx, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    av_dump_format(qFormatCtx, <span class="number">0</span>, filePath, <span class="number">0</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> videoStream = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; qFormatCtx-&gt;nb_streams;i++) &#123;</div><div class="line">        <span class="keyword">if</span> (qFormatCtx-&gt;streams[i]-&gt;codecpar-&gt;codec_type == AVMEDIA_TYPE_VIDEO) &#123;</div><div class="line">            videoStream = i;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (videoStream == <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    qCodeCtx = avcodec_alloc_context3(<span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">if</span> (avcodec_parameters_to_context(qCodeCtx, qFormatCtx-&gt;streams[videoStream]-&gt;codecpar) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    qCodec = avcodec_find_decoder(qCodeCtx-&gt;codec_id);</div><div class="line">    <span class="keyword">if</span> (qCodeCtx == <span class="literal">NULL</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (avcodec_open2(qCodeCtx, qCodec, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    qSwsCtx = sws_getContext(qCodeCtx-&gt;width,</div><div class="line">                             qCodeCtx-&gt;height,</div><div class="line">                             qCodeCtx-&gt;pix_fmt,</div><div class="line">                             qCodeCtx-&gt;width,</div><div class="line">                             qCodeCtx-&gt;height,</div><div class="line">                             AV_PIX_FMT_RGBA,</div><div class="line">                             SWS_BICUBIC, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">while</span> (av_read_frame(qFormatCtx, &amp;qPacket) &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (qPacket.stream_index == videoStream) &#123;</div><div class="line">            <span class="keyword">if</span>(canceled)&#123;</div><div class="line">                av_packet_unref(&amp;qPacket);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(qPacket.flags==<span class="number">1</span>)&#123;</div><div class="line">                [timestamp_array addObject:[NSString stringWithFormat:@<span class="string">"%lld"</span>,qPacket.pts]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        av_packet_unref(&amp;qPacket);</div><div class="line">    &#125;</div><div class="line">    sws_freeContext(qSwsCtx);</div><div class="line">    avcodec_close(qCodeCtx);</div><div class="line">    avformat_close_input(&amp;qFormatCtx);</div><div class="line">    <span class="keyword">return</span> timestamp_array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
         
@@ -391,7 +391,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p2201728454.jpg" alt="宽高"> </p>
+        <p><img src="/img/p2201728454.jpg" alt="FLYING"> </p>
 <p>有时候我们需要将大量的图片放到内存里面，但是又不想占用太多内存。比如实现进度条拖拽流畅的正播倒播，只能先把视频帧解码之后放到内存中才能实现。如果是原始图片大小，假设为1280*720的图片，4通道，我们可以简单估算一下时长一分钟帧率为24视频解码之后所占内存的大小：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">60</span>*<span class="number">24</span>*(<span class="number">1280</span>*<span class="number">720</span>*<span class="number">4</span>/<span class="number">8</span>)/<span class="number">1024</span> kB = <span class="number">648000</span> kB = <span class="number">632</span> MB</div></pre></td></tr></table></figure></p>
 <p>632 MB 的内存对于PC端好像还可以接受，但是对于移动端来说就显得弥足珍贵了，如果对图片的质量要求不要太高，我们可以改变图片的宽高来实现节省内存的目的，比如宽高都变为1/4，就可以将内存占用将为原来的1/16，这可是相当可观的，四通道的图片在内存中是以RGBARGBARGBA…这种方式排列的，所以我们可以用如下方式改变图片的宽高：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> heigth = origin_height&gt;&gt;<span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> width = origin_width&gt;&gt;<span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; heigth; i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</div><div class="line">        mini_buffer[(i * width + j)&lt;&lt;<span class="number">2</span>]         </div><div class="line">            = buffer[(i * origin_width + j) &lt;&lt; <span class="number">4</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">1</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">1</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">2</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">2</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">3</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">3</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>当然你可以采用cv_resize，如果条件允许的话。</p>
@@ -475,10 +475,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>很多时候，我们想要了解某个iOS应用API调用的方式，需要对手机进行抓包。<br>这里推荐使用Charles。<br>启动Charles：<br><img src="/img/charles.png" alt="compile"></p>
+        <p>很多时候，我们想要了解某个iOS应用API调用的方式，需要对手机进行抓包。<br>这里推荐使用Charles。<br>启动Charles：<br><img src="/img/charles.png" alt="FLYING"></p>
 <p>1,http抓包：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig</div></pre></td></tr></table></figure></p>
 <p>查看局域网pc端局域网IP，假设为192.168.1.101<br>手机端将proxy设置为：192.168.1.101:8888</p>
-<p><img src="/img/charles_valid.png" alt="compile"></p>
+<p><img src="/img/charles_valid.png" alt="FLYING"></p>
 <p>这样就可以抓到http的包了。</p>
 <p>2,https抓包：<br>
         
@@ -555,7 +555,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172661.jpg" alt="arc"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line"><span class="comment">//等待队列执行完毕，访问存储到dict中的对象</span></div><div class="line">...</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
+        <p><img src="/img/p220172661.jpg" alt="FLYING"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line"><span class="comment">//等待队列执行完毕，访问存储到dict中的对象</span></div><div class="line">...</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
 <p>wtf，继续调查，发现block分为三种：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_NSConcretStackBlock</div><div class="line">_NSConcretGlobalBlock</div><div class="line">_NSConcretMallocBlock</div></pre></td></tr></table></figure></p>
         
           <a class="article-more-a" href="/2017/07/15/GCD-block中变量总被回收/#more">more >></a>
@@ -643,7 +643,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/235113-140Z111132231.jpg" alt="compile"></p>
+        <p><img src="/img/235113-140Z111132231.jpg" alt="FLYING"></p>
 <p>在实际的iOS开发项目实践中，我们有时候会遇到在同一个项目中同时编译oc、c++、c语言的情况，虽然理论上说c++为c的超集，oc++为c++的超集，但实际编译会出现各种各样的错误。先不讨论这是不是苹果的锅，毕竟当下解决问题才是最重要的。<br>首先设置源文件编译方式Build Settings-&gt;Compile Sources As-&gt;According to File Type</p>
 <p>new file</p>
 <p>ocProxy.h<br>ocProxy.m<br>ocProxy可以实现oc与c的混编，比如可以调用ffmpeg实现视频解码，如果需要调用c++方法，比如使用dlib做图像处理，就可以调用oc++Proxy里面的接口来实现间接的调用。</p>
@@ -733,7 +733,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172658.jpg" alt="你总以为是永恒"> </p>
+        <p><img src="/img/p220172658.jpg" alt="FLYING"> </p>
 <p>你受了重重的伤 你痛不欲生 像是到了世界末日<br>你感觉这痛没有尽头无止无休<br>一段时间过去 这时间可以是一个月 一年 你终究还是可以没心没肺的笑了</p>
 <p>你爱上一个姑娘 她并不爱你 你朝思暮想 感觉没有了她 太阳都失去了颜色<br>你感觉这爱死去活来不眠不休<br>当你受够了冷落懂得了自尊 太阳终究还是恢复了颜色 你终究还是会遇到互相爱慕的姑娘</p>
 <p>你颠沛流离 居无定所 你路过很多城 走过很多路<br>你感觉这流浪连连绵绵无尽无头<br>可终究 你会在某个城市生根发芽 过上想要的生活</p>
@@ -798,7 +798,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/578994027094864721.png" alt="ffmpeg"></p>
+        <p><img src="/img/578994027094864721.png" alt="FLYING"></p>
 <p>视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……<br>如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：<br>1，seek到前面最近的一个I帧；<br>2，解码到离所给时间戳最近的视频帧，返回；</p>
 <p>假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int64_t</span> fm_timestamp = input_timestamp/(av_q2d(videoStream-&gt;time_base)*AV_TIME_BASE);</div></pre></td></tr></table></figure></p>
 <p>seek前面最近的I帧，ffmpeg是有提供seek接口的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">av_seek_frame(qFormatCtx,</div><div class="line">              videoStream,</div><div class="line">              fm_timestamp  ,</div><div class="line">              AVSEEK_FLAG_BACKWARD);</div></pre></td></tr></table></figure></p>
@@ -885,7 +885,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172657.jpg" alt="失忆先生手记"> </p>
+        <p><img src="/img/p220172657.jpg" alt="FLYING"> </p>
 <p>失忆先生你好，看到这封信应该是在桌上、门上或者马桶盖上，见字如面，又是美好的一天：<br>1，你现在位于XXXXXX，你出生在XXXXXX；<br>2，银行卡余额xxxxxx￥，信用卡欠款，xxx￥；<br>3，今天是20xx.xx.xx日，你的生日是19xx.xx.xx日，现在是早晨8:30。洗手间蓝色有小贝头像的牙刷缸是你的，今天要穿的衣服已准备好放在衣架上，冰箱有昨天准备好的早饭，最好热一下再吃。公司上班时间是9:30，不想迟到就在9:00之前出门；<br>4，小区门口栏杆上的牵牛花不赖，我想你该带着相机；<br>5，上班出门右转直行300米美好若初见站上车，痛苦伤离别站下车，下班亦如是；<br>6，你应该是喜欢上苹果姑娘了；<br>7，工作内容写在桌面的当日工作计划书里了，自己看去；<br>8，茄子先生跟你吵架了，我想你可以试着跟他说说话；<br>9，楼下的花猫估计被你吓着了，你该跟它道个歉，桌上有半块面包给它拿着，找不着它就放路边第一个垃圾桶，它经常去那；<br>10，至于昨天开心还是难过，忘了，向每一个见到的人微笑；<br>11，晚上八点约了小强、八戒、法海一块吃饭，你买单，悟空太横了没叫他；<br>12，别忘了给你妈打个电话；<br>12a,明早不想饿肚子就准备早饭；<br>12b,今天的事情统统都将忘记,无论多晚，务必写一封信给明天，一式三份，贴在桌上、门上还有马桶盖上，切记切记！</p>
 
       
@@ -944,7 +944,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p220172671.jpg" alt="Golang"> </p>
+        <p><img src="/img/p220172671.jpg" alt="FLYING"> </p>
 <p>你抬头看看窗外，天色似乎有点暗了。<br>“我要回去啦！”<br>“不再坐会儿了。”<br>“不了，一会天就黑了，路上不好走。”<br>边说着话套上外套，围上围巾，戴上手套：<br>“走了”<br>打开门，一股冷气吹了进来，夹杂着几颗雪花打着旋融化到地板上。<br>“雪还在下呢！”<br>“是啊，路上注意安全！”<br>“嗯！”<br>外面一片银装素裹，鲜有人路过。<br>偶尔能看到几串野兔留下的脚印，脚踩在厚厚的雪面上，咯吱，咯吱……<br>穿过一片密林，树上的小动物受了惊吓，大块的积雪簌簌落下来。<br>远远的看到自家屋顶上冒着的炊烟，对着手呵几口气，脚步不自觉加快了些。<br>雪花还在飘，调皮的落在脸上，消失不见，你打个冷战，心想：好冷啊。<br>索性小跑起来，到了家门口，扑落身上的雪花，将门微微打开，探头进去：“我回来啦！”<br>然后迅速钻了进去，将冷气关在门外。<br>瞬间被热情洋溢的暖意包围，睫毛上的雪花融了，眼前却模糊着幸福。<br>火炉烧的旺旺的，不时传来噼噼啪啪木头碎裂的声响，上面放着将开的水壶，咕噜咕噜冒着白气。<br>奶奶坐在火炉旁边，不时的吧几口烟锅，脸上映着炉火的微光，脚下偎着花猫，偶尔蹭下身子喵喵叫几声。<br>
         
           <a class="article-more-a" href="/2017/07/06/谨以此故事为你取暖/#more">more >></a>
@@ -1085,6 +1085,22 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -1121,43 +1137,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1173,6 +1157,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -1182,6 +1174,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1252,7 +1252,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王&lt;br&gt;&lt;br&gt;联系我：&lt;br&gt;yangf.code@gmail.com</div>
   	  	
     	</section>
     

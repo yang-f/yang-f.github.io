@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="有时候我们需要将大量的图片放到内存里面，但是又不想占用太多内存。比如实现进度条拖拽流畅的正播倒播，只能先把视频帧解码之后放到内存中才能实现。如果是原始图片大小，假设为1280*720的图片，4通道，我们可以简单估算一下时长一分钟帧率为24视频解码之后所占内存的大小：160*24*(1280*720*4/8)/1024 kB = 648000 kB = 632 MB 632 MB 的内存对于PC">
 <meta property="og:image" content="http://yang-f.github.io/img/p2201728454.jpg">
-<meta property="og:updated_time" content="2017-08-10T09:52:08.000Z">
+<meta property="og:updated_time" content="2019-02-15T04:15:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="改变四通道图片的宽高，节省内存开销">
 <meta name="twitter:description" content="有时候我们需要将大量的图片放到内存里面，但是又不想占用太多内存。比如实现进度条拖拽流畅的正播倒播，只能先把视频帧解码之后放到内存中才能实现。如果是原始图片大小，假设为1280*720的图片，4通道，我们可以简单估算一下时长一分钟帧率为24视频解码之后所占内存的大小：160*24*(1280*720*4/8)/1024 kB = 648000 kB = 632 MB 632 MB 的内存对于PC">
@@ -213,7 +213,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p2201728454.jpg" alt="宽高"> </p>
+        <p><img src="/img/p2201728454.jpg" alt="FLYING"> </p>
 <p>有时候我们需要将大量的图片放到内存里面，但是又不想占用太多内存。比如实现进度条拖拽流畅的正播倒播，只能先把视频帧解码之后放到内存中才能实现。如果是原始图片大小，假设为1280*720的图片，4通道，我们可以简单估算一下时长一分钟帧率为24视频解码之后所占内存的大小：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">60</span>*<span class="number">24</span>*(<span class="number">1280</span>*<span class="number">720</span>*<span class="number">4</span>/<span class="number">8</span>)/<span class="number">1024</span> kB = <span class="number">648000</span> kB = <span class="number">632</span> MB</div></pre></td></tr></table></figure></p>
 <p>632 MB 的内存对于PC端好像还可以接受，但是对于移动端来说就显得弥足珍贵了，如果对图片的质量要求不要太高，我们可以改变图片的宽高来实现节省内存的目的，比如宽高都变为1/4，就可以将内存占用将为原来的1/16，这可是相当可观的，四通道的图片在内存中是以RGBARGBARGBA…这种方式排列的，所以我们可以用如下方式改变图片的宽高：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> heigth = origin_height&gt;&gt;<span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> width = origin_width&gt;&gt;<span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; heigth; i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; width; j++)&#123;</div><div class="line">        mini_buffer[(i * width + j)&lt;&lt;<span class="number">2</span>]         </div><div class="line">            = buffer[(i * origin_width + j) &lt;&lt; <span class="number">4</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">1</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">1</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">2</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">2</span>];</div><div class="line">        mini_buffer[((i * width + j)&lt;&lt;<span class="number">2</span>) + <span class="number">3</span>]   </div><div class="line">            = buffer[((i * origin_width + j) &lt;&lt; <span class="number">4</span>) + <span class="number">3</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>当然你可以采用cv_resize，如果条件允许的话。</p>
@@ -463,6 +463,22 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -499,43 +515,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,6 +535,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -560,6 +552,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,7 +630,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王&lt;br&gt;&lt;br&gt;联系我：&lt;br&gt;yangf.code@gmail.com</div>
   	  	
     	</section>
     

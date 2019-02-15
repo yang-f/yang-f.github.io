@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server123456789101112package mainimport &amp;#123;    &quot;net/http&quot;    &quot;github.com/gorilla/mux&quot;&amp;#125;func main() &amp;#123;    router = mux.NewRouter(">
 <meta property="og:image" content="http://yang-f.github.io/img/golang.jpg">
-<meta property="og:updated_time" content="2017-07-15T11:43:30.000Z">
+<meta property="og:updated_time" content="2019-02-15T04:15:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现简单go web框架">
 <meta name="twitter:description" content="使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server123456789101112package mainimport &amp;#123;    &quot;net/http&quot;    &quot;github.com/gorilla/mux&quot;&amp;#125;func main() &amp;#123;    router = mux.NewRouter(">
@@ -213,7 +213,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/golang.jpg" alt="Golang"><br>使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"github.com/gorilla/mux"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    router = mux.NewRouter().StrictSlash(<span class="literal">true</span>)</div><div class="line">    router.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"/static"</span>)))</div><div class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p><img src="/img/golang.jpg" alt="FLYING"><br>使用Golang构建web服务还是比较简单的，使用net/http和gorilla/mux就能快速的构建一个简易的web server<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"github.com/gorilla/mux"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    router = mux.NewRouter().StrictSlash(<span class="literal">true</span>)</div><div class="line">    router.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"/static"</span>)))</div><div class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>这样一个简易的静态服务器就构建成功了。</p>
 <p>当然我们不可能就这么满足了，我们当然希望这个服务器是可以处理一些业务逻辑的。比如登录：<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">router.HandleFunc(<span class="string">"/login"</span>, handlers.LoginHandler)</div></pre></td></tr></table></figure></p>
@@ -494,6 +494,22 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -530,43 +546,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,6 +566,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -591,6 +583,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,7 +661,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王&lt;br&gt;&lt;br&gt;联系我：&lt;br&gt;yangf.code@gmail.com</div>
   	  	
     	</section>
     

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：1，seek到前面最近的一个I帧；2，解码到离所给时间戳最近的视频帧，返回； 假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：1int64_t fm_timestamp = input_timestamp/(av">
 <meta property="og:image" content="http://yang-f.github.io/img/578994027094864721.png">
-<meta property="og:updated_time" content="2017-07-08T03:55:24.000Z">
+<meta property="og:updated_time" content="2019-02-15T04:15:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ffmpeg 根据时间获取视频帧">
 <meta name="twitter:description" content="视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：1，seek到前面最近的一个I帧；2，解码到离所给时间戳最近的视频帧，返回； 假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：1int64_t fm_timestamp = input_timestamp/(av">
@@ -213,7 +213,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/578994027094864721.png" alt="ffmpeg"></p>
+        <p><img src="/img/578994027094864721.png" alt="FLYING"></p>
 <p>视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……<br>如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：<br>1，seek到前面最近的一个I帧；<br>2，解码到离所给时间戳最近的视频帧，返回；</p>
 <p>假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int64_t</span> fm_timestamp = input_timestamp/(av_q2d(videoStream-&gt;time_base)*AV_TIME_BASE);</div></pre></td></tr></table></figure></p>
 <p>seek前面最近的I帧，ffmpeg是有提供seek接口的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">av_seek_frame(qFormatCtx,</div><div class="line">              videoStream,</div><div class="line">              fm_timestamp  ,</div><div class="line">              AVSEEK_FLAG_BACKWARD);</div></pre></td></tr></table></figure></p>
@@ -468,6 +468,22 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -504,43 +520,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,6 +540,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -565,6 +557,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,7 +635,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">全占工程师&lt;br&gt;&lt;br&gt;电影&lt;br&gt;读书&lt;br&gt;摄影&lt;br&gt;篮球&lt;br&gt;海贼王&lt;br&gt;&lt;br&gt;联系我：&lt;br&gt;yangf.code@gmail.com</div>
   	  	
     	</section>
     
