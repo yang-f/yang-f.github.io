@@ -5,22 +5,22 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yang-f.github.io">
+  <link rel="dns-prefetch" href="https://yangf.vip">
   <title>多线程解码 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近在做视频解码相关的工作，有一个功能需要将整个视频解码之后放到内存里面，经测试，一分钟的视频解码需要20s，不算太理想，考虑用多线程来实现。基本思路是获取所有关键帧信息，然后开启不同的线程来从不同的关键帧开始解码。 1，获取所有关键帧信息，获取所有的关键帧时间戳，大约会花费0.2s：1234567891011121314151617181920212223242526272829303132">
 <meta name="keywords" content="ffmpeg,c++,decode,多线程,object-c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程解码">
-<meta property="og:url" content="http://yang-f.github.io/2017/08/11/多线程解码/index.html">
+<meta property="og:url" content="https://yangf.vip/2017/08/11/多线程解码/index.html">
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="最近在做视频解码相关的工作，有一个功能需要将整个视频解码之后放到内存里面，经测试，一分钟的视频解码需要20s，不算太理想，考虑用多线程来实现。基本思路是获取所有关键帧信息，然后开启不同的线程来从不同的关键帧开始解码。 1，获取所有关键帧信息，获取所有的关键帧时间戳，大约会花费0.2s：1234567891011121314151617181920212223242526272829303132">
-<meta property="og:image" content="http://yang-f.github.io/img/p220172662.jpg">
-<meta property="og:updated_time" content="2019-02-15T04:14:53.000Z">
+<meta property="og:image" content="https://yangf.vip/img/p220172662.jpg">
+<meta property="og:updated_time" content="2019-02-21T10:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程解码">
 <meta name="twitter:description" content="最近在做视频解码相关的工作，有一个功能需要将整个视频解码之后放到内存里面，经测试，一分钟的视频解码需要20s，不算太理想，考虑用多线程来实现。基本思路是获取所有关键帧信息，然后开启不同的线程来从不同的关键帧开始解码。 1，获取所有关键帧信息，获取所有的关键帧时间戳，大约会花费0.2s：1234567891011121314151617181920212223242526272829303132">
-<meta name="twitter:image" content="http://yang-f.github.io/img/p220172662.jpg">
+<meta name="twitter:image" content="https://yangf.vip/img/p220172662.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -349,7 +349,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yang-f.github.io/2017/08/11/多线程解码/" alt="微信分享二维码">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yangf.vip/2017/08/11/多线程解码/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -383,6 +383,37 @@
 
 
 
+
+  
+  
+  
+
+  
+  <!--<section id="comments" class="article-nav article" style="background-color: #eaeaea;border-width:0px;">
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2138062"></script>
+  </section>-->
+
+  <section id="comments">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <div class="gitalk" id="comment_gitalk"></div>
+    <script>
+    var gitalk = new Gitalk({
+      clientID: '7752d4487dfa8d4aa4c1',
+      clientSecret: '83659c557114e040a48a5a979e7b53abd20faf1b',
+      repo: 'yang-f.github.io',
+      owner: 'yang-f',
+      admin: ['yang-f'],
+      id: '多线程解码',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+
+    gitalk.render('comment_gitalk')
+    </script>
+  </section>
+
+  
 
 
           </div>
@@ -478,6 +509,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
@@ -491,6 +526,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,26 +562,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ARC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,10 +597,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rgba</a>
               </li>
              
@@ -579,6 +606,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
             
             <div class="clearfix"></div>
