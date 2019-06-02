@@ -199,6 +199,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-flutter-web开发实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/02/flutter-web开发实践/">flutter_web开发实践</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/02/flutter-web开发实践/" class="archive-article-date">
+  	<time datetime="2019-06-02T14:52:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/code.png" alt="FLYING"></p>
+<p>最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。<br> 安装 flutter_web 构建工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter pub global activate webdev</div></pre></td></tr></table></figure></p>
+<p>这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pub global deactivate webdev</div><div class="line">pub global activate webdev 2.0.6</div><div class="line">flutter/flutter_web</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/flutter/flutter_web" target="_blank" rel="external">flutter_web</a><br>这里是官方 flutter_web 的 GitHub 地址，我们把这个项目 clone 到本地：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd examples/hello_world/</div><div class="line">flutter pub upgrade</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
+<p>访问 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:8080</div></pre></td></tr></table></figure></p>
+<p>就可以看到 hello world! 的页面了。</p>
+<p>那么就开始新建一个项目吧，官方推荐 VS Code 和 IntelliJ 创建项目，鉴于之前刚刚从 VS Code 脱坑，不想折腾，想使用 command 直接创建，奈何没有找到方式，官方貌似也没有相关的说明，那就将 GitHub 上的 hello world 拿过来开始吧，我的项目名称叫 nishihouziqinglaidedoubima_fe(哈哈：你是猴子请来的逗比吗)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir nishihouziqinglaidedoubima_fe</div><div class="line">cd nishihouziqinglaidedoubima_fe</div><div class="line">cp xxx/flutter_web/examples/hello_web/* ./</div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2019/06/02/flutter-web开发实践/#more">more >></a>
+        
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dart</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/02/flutter-web开发实践/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-3D打印机入门遇到的一些坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -959,93 +1044,6 @@
 
 
   
-    <article id="post-ffmpeg-根据时间获取视频帧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/ffmpeg-根据时间获取视频帧/">ffmpeg 根据时间获取视频帧</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/08/ffmpeg-根据时间获取视频帧/" class="archive-article-date">
-  	<time datetime="2017-07-08T02:56:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/578994027094864721.png" alt="FLYING"></p>
-<p>视频帧的排列顺序一般是I、B、B、P、B、B、P、B、B……I、B、B、P……<br>如果时间戳对应的帧为P帧或者B帧是不能直接获取当前的视频帧的，所以我们的基本思路是：<br>1，seek到前面最近的一个I帧；<br>2，解码到离所给时间戳最近的视频帧，返回；</p>
-<p>假设所给的时间戳单位为ms,我们需要将它转换为ffmpeg内部的时间戳：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int64_t</span> fm_timestamp = input_timestamp/(av_q2d(videoStream-&gt;time_base)*AV_TIME_BASE);</div></pre></td></tr></table></figure></p>
-<p>seek前面最近的I帧，ffmpeg是有提供seek接口的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">av_seek_frame(qFormatCtx,</div><div class="line">              videoStream,</div><div class="line">              fm_timestamp  ,</div><div class="line">              AVSEEK_FLAG_BACKWARD);</div></pre></td></tr></table></figure></p>
-<p>这里有几个选项：<br>
-        
-          <a class="article-more-a" href="/2017/07/08/ffmpeg-根据时间获取视频帧/#more">more >></a>
-        
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ffmpeg</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">avframe</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">keyframe</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/ffmpeg-根据时间获取视频帧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1150,22 +1148,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Xcode</a>
               </li>
              
@@ -1186,6 +1168,22 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
               </li>
              
@@ -1199,6 +1197,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dart</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,6 +1232,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">decode</a>
               </li>
              
@@ -1235,10 +1245,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">object-c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Microservices</a>
               </li>
              
               <li class="article-tag-list-item">

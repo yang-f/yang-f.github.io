@@ -7,21 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="google-site-verification" content="L6bDio2FUWMxwQ6FDKoMpH0BoUjVAYdlgAZhGtWl0M0" />
   <link rel="dns-prefetch" href="https://yangf.vip">
-  <title>3D打印机入门遇到的一些坑 | FLYING的博客</title>
+  <title>flutter_web开发实践 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近 3D 打印机的价格算是比较亲民了，于是入手了一台两千元以内的 3D 打印机，刚刚开始的时候踩了很多的坑，导致浪费了大量的时间和精力，这里分享出来希望可以帮助更多志同道合的朋友。  打印时不出料,这是新手常犯的错误:  检查进料是否充分; 官方指导的挤出头温度是否偏低，适当调高一下挤出头温度;   模型不能固定到平台上，导致打印失败:  平台是否调平,调平是不要忘了处理掉挤出头上残留的线材;">
-<meta name="keywords" content="3D打印机">
+  <meta name="description" content="最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。 安装 flutter_web 构建工具：1flutter pub global activate webdev 这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：123pub global deactivate webd">
+<meta name="keywords" content="web,dart,flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3D打印机入门遇到的一些坑">
-<meta property="og:url" content="https://yangf.vip/2019/04/29/3D打印机入门遇到的一些坑/index.html">
+<meta property="og:title" content="flutter_web开发实践">
+<meta property="og:url" content="https://yangf.vip/2019/06/02/flutter-web开发实践/index.html">
 <meta property="og:site_name" content="FLYING的博客">
-<meta property="og:description" content="最近 3D 打印机的价格算是比较亲民了，于是入手了一台两千元以内的 3D 打印机，刚刚开始的时候踩了很多的坑，导致浪费了大量的时间和精力，这里分享出来希望可以帮助更多志同道合的朋友。  打印时不出料,这是新手常犯的错误:  检查进料是否充分; 官方指导的挤出头温度是否偏低，适当调高一下挤出头温度;   模型不能固定到平台上，导致打印失败:  平台是否调平,调平是不要忘了处理掉挤出头上残留的线材;">
-<meta property="og:image" content="https://yangf.vip/img/3d.jpg">
-<meta property="og:updated_time" content="2019-04-29T05:57:24.759Z">
+<meta property="og:description" content="最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。 安装 flutter_web 构建工具：1flutter pub global activate webdev 这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：123pub global deactivate webd">
+<meta property="og:image" content="https://yangf.vip/img/code.png">
+<meta property="og:updated_time" content="2019-06-02T15:09:38.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3D打印机入门遇到的一些坑">
-<meta name="twitter:description" content="最近 3D 打印机的价格算是比较亲民了，于是入手了一台两千元以内的 3D 打印机，刚刚开始的时候踩了很多的坑，导致浪费了大量的时间和精力，这里分享出来希望可以帮助更多志同道合的朋友。  打印时不出料,这是新手常犯的错误:  检查进料是否充分; 官方指导的挤出头温度是否偏低，适当调高一下挤出头温度;   模型不能固定到平台上，导致打印失败:  平台是否调平,调平是不要忘了处理掉挤出头上残留的线材;">
-<meta name="twitter:image" content="https://yangf.vip/img/3d.jpg">
+<meta name="twitter:title" content="flutter_web开发实践">
+<meta name="twitter:description" content="最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。 安装 flutter_web 构建工具：1flutter pub global activate webdev 这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：123pub global deactivate webd">
+<meta name="twitter:image" content="https://yangf.vip/img/code.png">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -200,59 +200,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-3D打印机入门遇到的一些坑" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-flutter-web开发实践" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      3D打印机入门遇到的一些坑
+      flutter_web开发实践
     </h1>
   
 
         
-        <a href="/2019/04/29/3D打印机入门遇到的一些坑/" class="archive-article-date">
-  	<time datetime="2019-04-29T05:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
+        <a href="/2019/06/02/flutter-web开发实践/" class="archive-article-date">
+  	<time datetime="2019-06-02T14:52:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/3d.jpg" alt="3D"></p>
-<p>最近 3D 打印机的价格算是比较亲民了，于是入手了一台两千元以内的 3D 打印机，刚刚开始的时候踩了很多的坑，导致浪费了大量的时间和精力，这里分享出来希望可以帮助更多志同道合的朋友。</p>
-<ul>
-<li><p>打印时不出料,这是新手常犯的错误:</p>
-<ul>
-<li>检查进料是否充分;</li>
-<li>官方指导的挤出头温度是否偏低，适当调高一下挤出头温度;</li>
-</ul>
-</li>
-<li><p>模型不能固定到平台上，导致打印失败:</p>
-<ul>
-<li>平台是否调平,调平是不要忘了处理掉挤出头上残留的线材;</li>
-<li>平台是否易于模型黏贴，可以使用美纹纸将平台铺上;</li>
-<li>模型的首层打印速度是否过快，适当降低一下首层的打印速度;</li>
-<li>过早的启用了风扇降温，禁用首层的风扇降温，可以避免因为过快的冷却导致黏贴不牢;</li>
-<li>如果平台有加温的功能，适当提高一下平台的温度;</li>
-<li>平台上是否有异物，小的坑洞，如果有的话尽快处理掉，这些小的细节看起来不起眼，但是经常会导致打印失败;</li>
-</ul>
-</li>
-<li><p>模型顶部出现轮廓变平的情况:</p>
-<ul>
-<li>挤出头的温度太高;</li>
-<li>没有启用风扇冷却;</li>
-</ul>
-</li>
-<li><p>相邻的两个不连续的高点存在严重的拉丝现象:</p>
-<ul>
-<li>没有启用回抽功能;</li>
-<li>打印速度过快;</li>
-</ul>
-</li>
-</ul>
-<p>没有太多，但是以上每一条都是中肯的建议，希望可以有用。</p>
+        <p><img src="/img/code.png" alt="FLYING"></p>
+<p>最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。<br> 安装 flutter_web 构建工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter pub global activate webdev</div></pre></td></tr></table></figure></p>
+<p>这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pub global deactivate webdev</div><div class="line">pub global activate webdev 2.0.6</div><div class="line">flutter/flutter_web</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/flutter/flutter_web" target="_blank" rel="external">flutter_web</a><br>这里是官方 flutter_web 的 GitHub 地址，我们把这个项目 clone 到本地：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd examples/hello_world/</div><div class="line">flutter pub upgrade</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
+<p>访问 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:8080</div></pre></td></tr></table></figure></p>
+<p>就可以看到 hello world! 的页面了。</p>
+<p>那么就开始新建一个项目吧，官方推荐 VS Code 和 IntelliJ 创建项目，鉴于之前刚刚从 VS Code 脱坑，不想折腾，想使用 command 直接创建，奈何没有找到方式，官方貌似也没有相关的说明，那就将 GitHub 上的 hello world 拿过来开始吧，我的项目名称叫 nishihouziqinglaidedoubima_fe(哈哈：你是猴子请来的逗比吗)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir nishihouziqinglaidedoubima_fe</div><div class="line">cd nishihouziqinglaidedoubima_fe</div><div class="line">cp xxx/flutter_web/examples/hello_web/* ./</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>做一下小改动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">-&gt;pubspec.yaml</div><div class="line"></div><div class="line">name: nishihouziqinglaidedoubima_fe</div><div class="line"></div><div class="line">environment:</div><div class="line">  # You must be using Flutter &gt;=1.5.0 or Dart &gt;=2.3.0</div><div class="line">  sdk: &apos;&gt;=2.3.0-dev.0.1 &lt;3.0.0&apos;</div><div class="line"></div><div class="line">dependencies:</div><div class="line">  flutter_web: any</div><div class="line">  flutter_web_ui: any</div><div class="line"></div><div class="line">dev_dependencies:</div><div class="line">  build_runner: ^1.4.0</div><div class="line">  build_web_compilers: ^2.0.0</div><div class="line"></div><div class="line">dependency_overrides:</div><div class="line">  flutter_web:</div><div class="line">    git:</div><div class="line">      url: flutter/flutter_web</div><div class="line">      path: packages/flutter_web</div><div class="line">  flutter_web_ui:</div><div class="line">    git:</div><div class="line">      url: flutter/flutter_web</div><div class="line">      path: packages/flutter_web_ui</div></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pub get</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
+<p>就可以了，这里可能会遇到找不到自己定义 package 的情况，查看 .packages 最后一行，看看是不是跟自己项目的包名一致，不一致则改之，我的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nishihouziqinglaidedoubima_fe:lib/</div></pre></td></tr></table></figure></p>
+<p>然后就可以愉快的玩耍了。<br>跟移动端不同的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//移动端:</div><div class="line">import &apos;package:flutter/material.dart&apos;;</div><div class="line">//web 端:</div><div class="line">import &apos;package:flutter_web/material.dart&apos;;</div></pre></td></tr></table></figure></p>
+<p>然后就没有什么不同啦。<br>写个自动发布的脚本吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-&gt; deploy.sh</div><div class="line"></div><div class="line">webdev build</div><div class="line"></div><div class="line">cp -r build/* cache/</div><div class="line">cd cache/</div><div class="line">git pull</div><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m &apos;:robot: auto deploy&apos;</div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>之后也遇到几个坑：<br>1，网页 title 设置<br>一开始直觉是更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-&gt;web/index.html</div></pre></td></tr></table></figure></p>
+<p>里面的 title 但是页面打开之后瞬间就会被覆盖，发现需要在 dart 文件里面添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">return MaterialApp(</div><div class="line">  title: &apos;你是猴子请来的逗比吗?&apos;,  //这里</div><div class="line">  onGenerateRoute: (RouteSettings settings) &#123;</div><div class="line">    switch (settings.name) &#123;</div><div class="line">      case AppRoute.ROOT:</div><div class="line">        return new CustomRoute(</div><div class="line">          builder: (_) =&gt; new HomePage(),</div><div class="line">          settings: settings,</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>2，图片加载<br>按移动端的方式是更改 pubspec.yaml ，但试过之后无效，正确的做法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd web</div><div class="line">mkdir assets</div><div class="line">mv xxx/your.png ./</div></pre></td></tr></table></figure></p>
+<p>引用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image: new DecorationImage(</div><div class="line">  image: new AssetImage(&apos;your.png&apos;),</div><div class="line">),</div></pre></td></tr></table></figure></p>
+<p>说一下我正在开发的这个项目<br><a href="https://github.com/yang-f/nishihouziqinglaidedoubima_fe" target="_blank" rel="external">nishihouziqinglaidedoubima_fe</a><br>致力于实现一个逗比程序员社区，分享程序员才能懂的段子，笑话，知识点。对这个项目赶兴趣的朋友可以联系我: yangf.code@gmail.com<br>或许我们可以一起做点不一样的事情。<br>网站地址：<br><a href="https://nishihouziqinglaidedoubima.com" target="_blank" rel="external">你是猴子请来的逗比吗</a><br>ps: 这个项目只是前端部分，暂时依赖于 GitHub pages，后端还没有想好怎么实现。</p>
 
       
       
@@ -291,7 +276,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">3D打印机</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dart</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -358,7 +351,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yangf.vip/2019/04/29/3D打印机入门遇到的一些坑/" alt="微信分享二维码">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yangf.vip/2019/06/02/flutter-web开发实践/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -372,18 +365,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/02/flutter-web开发实践/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          flutter_web开发实践
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/19/你踩着月亮了/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">你踩着月亮了</div>
+    <a href="/2019/04/29/3D打印机入门遇到的一些坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3D打印机入门遇到的一些坑</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -414,7 +398,7 @@
       repo: 'yang-f.github.io',
       owner: 'yang-f',
       admin: ['yang-f'],
-      id: '3D打印机入门遇到的一些坑',      // Ensure uniqueness and length less than 50
+      id: 'flutter_web开发实践',      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
 
