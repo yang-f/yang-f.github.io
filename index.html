@@ -220,32 +220,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/img/vim.png" alt="FLYING"></p>
-<p>工欲善其事，必先利其器。<br>之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。<br>这里默认大家已经安装了 dart SDK，flutter SDK。</p>
-<h2 id="先说一下折腾之前我的-vim-环境："><a href="#先说一下折腾之前我的-vim-环境：" class="headerlink" title="先说一下折腾之前我的 vim 环境："></a>先说一下折腾之前我的 vim 环境：</h2><p><a href="https://github.com/amix/vimrc" target="_blank" rel="external">https://github.com/amix/vimrc</a></p>
-<p>这个是我的基本配置，之前也使用过一些其它配置，但是用起来都感觉不太舒适，自从发现这个 repo 之后才正式走上了折腾 vim 的不归路。<br>然后就是大名鼎鼎的 YouCompleteMe:<br><a href="https://github.com/Valloric/YouCompleteMe" target="_blank" rel="external">https://github.com/Valloric/YouCompleteMe</a></p>
-<p>官方的图直接拿过来<br><img src="/img/youCompleteMe.gif" alt="vim"></p>
-<p>这个插件运气不好要折腾很久，大家自求多福吧。<br>安装插件也比较方便，使用 pathogen 就可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#仍到这个目录下就可以</div><div class="line">～/.vim_runtime/my_plugins</div></pre></td></tr></table></figure></p>
-<p>插件配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.vim_runtime/vimrcs/plugins_config.vim</div></pre></td></tr></table></figure>
-<h2 id="以上就是前提啦，下面就是主菜了"><a href="#以上就是前提啦，下面就是主菜了" class="headerlink" title="以上就是前提啦，下面就是主菜了"></a>以上就是前提啦，下面就是主菜了</h2><p>1，dart 语法解析，格式化：</p>
-<p><a href="https://github.com/dart-lang/dart-vim-plugin" target="_blank" rel="external">https://github.com/dart-lang/dart-vim-plugin</a><br><a href="https://github.com/natebosch/vim-lsc" target="_blank" rel="external">https://github.com/natebosch/vim-lsc</a><br><a href="https://github.com/natebosch/vim-lsc-dart" target="_blank" rel="external">https://github.com/natebosch/vim-lsc-dart</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/my_plugins/</div><div class="line">git clone https://github.com/dart-lang/dart-vim-plugin.git</div><div class="line">git clone https://github.com/natebosch/vim-lsc.git</div><div class="line">git clone https://github.com/natebosch/vim-lsc-dart.git</div></pre></td></tr></table></figure>
-<p>这里可能会出现 snapshots 找不到的情况:<br><img src="/img/dart.png" alt="vim"><br>确保这两个在一个目录下。</p>
-<p> 保存时自动格式化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim ~/.vim_runtime/vimrc/plugins_config.vim</div><div class="line">#添加</div><div class="line">autocmd BufWritePre *.dart* DartFmt</div></pre></td></tr></table></figure></p>
-<p><img src="/img/dart.gif" alt="vim"></p>
-<p>2，flutter 调试，运行，热加载：</p>
-<p><a href="https://github.com/thosakwe/vim-flutter" target="_blank" rel="external">https://github.com/thosakwe/vim-flutter</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/my_plugins/</div><div class="line">git clone https://github.com/thosakwe/vim-flutter.git</div></pre></td></tr></table></figure>
-<p>flutter run<br><img src="/img/flutterrun.gif" alt="vim"></p>
-<p>热加载<br><img src="/img/hot.gif" alt="vim"></p>
-<p>3，最后一个大招，设置 snipper：<br><a href="https://github.com/honza/vim-snippets" target="_blank" rel="external">https://github.com/honza/vim-snippets</a></p>
-<p>这个在之前的 vimrc 里面已经存在了，只要到 .vim_runtime 目录下更改就可以了。<br>为了让这个插件 与 YouCompleteMe 共存，需要改一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">vim ~/.vim_runtime/vimrc/plugins_config.vim</div><div class="line">#添加(这是从 stackoverflow 上拿到的一段代码)：</div><div class="line">function! g:UltiSnips_Complete()</div><div class="line">    call UltiSnips#ExpandSnippet()</div><div class="line">    if g:ulti_expand_res == 0</div><div class="line">        if pumvisible()</div><div class="line">            return &quot;\&lt;C-n&gt;&quot;</div><div class="line">        else</div><div class="line">            call UltiSnips#JumpForwards()</div><div class="line">            if g:ulti_jump_forwards_res == 0</div><div class="line">               return &quot;\&lt;TAB&gt;&quot;</div><div class="line">            endif</div><div class="line">        endif</div><div class="line">    endif</div><div class="line">    return &quot;&quot;</div><div class="line">endfunction</div><div class="line"></div><div class="line">au BufEnter * exec &quot;inoremap &lt;silent&gt; &quot; . g:UltiSnipsExpandTrigger . &quot; &lt;C-R&gt;=g:UltiSnips_Complete()&lt;cr&gt;&quot;</div><div class="line">let g:UltiSnipsJumpForwardTrigger=&quot;&lt;tab&gt;&quot;</div><div class="line">let g:UltiSnipsListSnippets=&quot;&lt;c-e&gt;&quot;</div><div class="line">&quot; this mapping Enter key to &lt;C-y&gt; to chose the current highlight item</div><div class="line">&quot; and close the selection list, same as other IDEs.</div><div class="line">&quot; CONFLICT with some plugins like tpope/Endwise</div><div class="line">inoremap &lt;expr&gt; &lt;CR&gt; pumvisible() ? &quot;\&lt;C-y&gt;&quot; : &quot;\&lt;C-g&gt;u\&lt;CR&gt;&quot;</div></pre></td></tr></table></figure>
-<p>添加 snipper:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/sources_non_forked/vim-snippets/snippets</div><div class="line">vim dart.snippers</div><div class="line">#添加</div><div class="line">snippet stl</div><div class="line">	import &apos;package:flutter/material.dart&apos;;</div><div class="line">	class $&#123;1:NAME&#125; extends StatelessWidget &#123;</div><div class="line">		$&#123;0:$1&#125;(&#123;Key key&#125;): super(key: key);</div><div class="line">		@override</div><div class="line">		Widget build(BuildContext context) &#123;</div><div class="line">			return new Container();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">snippet stf</div><div class="line">	import &apos;package:flutter/material.dart&apos;;</div><div class="line">	class $&#123;1:NAME&#125; extends StatefulWidget &#123;</div><div class="line">		$&#123;0:$1&#125;(&#123;Key key&#125;) : super(key: key);</div><div class="line">		@override</div><div class="line">		_$&#123;0:$1&#125;State createState() =&gt; _$&#123;0:$1&#125;State();</div><div class="line">	&#125;</div><div class="line">	class _$&#123;0:$1&#125;State extends State&lt;$&#123;0:$1&#125;&gt; &#123;</div><div class="line">		dispose()&#123;</div><div class="line">			super.dispose();</div><div class="line">		&#125;</div><div class="line">		initState()&#123;</div><div class="line">			super.initState();</div><div class="line">		&#125;</div><div class="line">		@override</div><div class="line">		Widget build(BuildContext context) &#123;</div><div class="line">			return new Container();</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>最后的运行效果<br><img src="/img/snipper.gif" alt="vim"></p>
-<p>就这么多了，感觉用起来还是挺爽的。如果是审查元素的话，估计要切回官方推荐的 ide 了，至少现在我还没有发现有什么好的办法。</p>
-
+<p>工欲善其事，必先利其器。<br>之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。<br>这里默认大家已经安装了 dart SDK，flutter SDK。<br>
+        
+          <a class="article-more-a" href="/2019/06/15/Flutter开发之vim环境/#more">more >></a>
+        
       
       
     </div>
@@ -272,6 +250,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
