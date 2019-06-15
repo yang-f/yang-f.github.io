@@ -7,18 +7,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="google-site-verification" content="L6bDio2FUWMxwQ6FDKoMpH0BoUjVAYdlgAZhGtWl0M0" />
   <link rel="dns-prefetch" href="https://yangf.vip">
-  <title>Tag: rest | FLYING的博客</title>
+  <title>Flutter开发之vim环境 | FLYING的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="素履之行">
-<meta name="keywords" content="Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FLYING的博客">
-<meta property="og:url" content="https://yangf.vip/tags/rest/index.html">
+  <meta name="description" content="工欲善其事，必先利其器。之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。这里默认大家已经安装了 dart SDK，flutter SDK。 先说一下折腾之前我的 vim 环境">
+<meta name="keywords" content="dart,flutter,vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter开发之vim环境">
+<meta property="og:url" content="https://yangf.vip/2019/06/15/Flutter开发之vim环境/index.html">
 <meta property="og:site_name" content="FLYING的博客">
-<meta property="og:description" content="素履之行">
+<meta property="og:description" content="工欲善其事，必先利其器。之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。这里默认大家已经安装了 dart SDK，flutter SDK。 先说一下折腾之前我的 vim 环境">
+<meta property="og:image" content="https://yangf.vip/img/vim.png">
+<meta property="og:image" content="https://yangf.vip/img/youCompleteMe.gif">
+<meta property="og:image" content="https://yangf.vip/img/dart.png">
+<meta property="og:image" content="https://yangf.vip/img/dart.gif">
+<meta property="og:image" content="https://yangf.vip/img/flutterrun.gif">
+<meta property="og:image" content="https://yangf.vip/img/hot.gif">
+<meta property="og:image" content="https://yangf.vip/img/snipper.gif">
+<meta property="og:updated_time" content="2019-06-15T11:57:16.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FLYING的博客">
-<meta name="twitter:description" content="素履之行">
+<meta name="twitter:title" content="Flutter开发之vim环境">
+<meta name="twitter:description" content="工欲善其事，必先利其器。之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。这里默认大家已经安装了 dart SDK，flutter SDK。 先说一下折腾之前我的 vim 环境">
+<meta name="twitter:image" content="https://yangf.vip/img/vim.png">
   
     <link rel="alternative" href="/atom.xml" title="FLYING的博客" type="application/atom+xml">
   
@@ -197,154 +206,210 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Flutter开发之vim环境" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/10/Golang-bool-计算器/" class="archive-article-date">
-  	<time datetime="2018-02-10T05:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/10/Golang-bool-计算器/">Golang bool 计算器</a>
+    <h1 class="article-title" itemprop="name">
+      Flutter开发之vim环境
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/15/Flutter开发之vim环境/" class="archive-article-date">
+  	<time datetime="2019-06-15T11:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/vim.png" alt="FLYING"></p>
+<p>工欲善其事，必先利其器。<br>之前用了挺长时间的 vim，最近接触 flutter，刚开始根据官方推荐在 Android studio 安装了插件，虽然也有 vim 插件，但是操作体验上难免不一致，而且有些操作避免不了要使用鼠标，最后下决心折腾一下 vim 下的开发环境，用了一段感觉还不错，分享一下。<br>这里默认大家已经安装了 dart SDK，flutter SDK。</p>
+<h2 id="先说一下折腾之前我的-vim-环境："><a href="#先说一下折腾之前我的-vim-环境：" class="headerlink" title="先说一下折腾之前我的 vim 环境："></a>先说一下折腾之前我的 vim 环境：</h2><p><a href="https://github.com/amix/vimrc" target="_blank" rel="external">https://github.com/amix/vimrc</a></p>
+<p>这个是我的基本配置，之前也使用过一些其它配置，但是用起来都感觉不太舒适，自从发现这个 repo 之后才正式走上了折腾 vim 的不归路。<br>然后就是大名鼎鼎的 YouCompleteMe:<br><a href="https://github.com/Valloric/YouCompleteMe" target="_blank" rel="external">https://github.com/Valloric/YouCompleteMe</a></p>
+<p>官方的图直接拿过来<br><img src="/img/youCompleteMe.gif" alt="vim"></p>
+<p>这个插件运气不好要折腾很久，大家自求多福吧。<br>安装插件也比较方便，使用 pathogen 就可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#仍到这个目录下就可以</div><div class="line">～/.vim_runtime/my_plugins</div></pre></td></tr></table></figure></p>
+<p>插件配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.vim_runtime/vimrcs/plugins_config.vim</div></pre></td></tr></table></figure>
+<h2 id="以上就是前提啦，下面就是主菜了"><a href="#以上就是前提啦，下面就是主菜了" class="headerlink" title="以上就是前提啦，下面就是主菜了"></a>以上就是前提啦，下面就是主菜了</h2><p>1，dart 语法解析，格式化：</p>
+<p><a href="https://github.com/dart-lang/dart-vim-plugin" target="_blank" rel="external">https://github.com/dart-lang/dart-vim-plugin</a><br><a href="https://github.com/natebosch/vim-lsc" target="_blank" rel="external">https://github.com/natebosch/vim-lsc</a><br><a href="https://github.com/natebosch/vim-lsc-dart" target="_blank" rel="external">https://github.com/natebosch/vim-lsc-dart</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/my_plugins/</div><div class="line">git clone https://github.com/dart-lang/dart-vim-plugin.git</div><div class="line">git clone https://github.com/natebosch/vim-lsc.git</div><div class="line">git clone https://github.com/natebosch/vim-lsc-dart.git</div></pre></td></tr></table></figure>
+<p>这里可能会出现 snapshots 找不到的情况:<br><img src="/img/dart.png" alt="vim"><br>确保这两个在一个目录下。</p>
+<p> 保存时自动格式化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim ~/.vim_runtime/vimrc/plugins_config.vim</div><div class="line">#添加</div><div class="line">autocmd BufWritePre *.dart* DartFmt</div></pre></td></tr></table></figure></p>
+<p><img src="/img/dart.gif" alt="vim"></p>
+<p>2，flutter 调试，运行，热加载：</p>
+<p><a href="https://github.com/thosakwe/vim-flutter" target="_blank" rel="external">https://github.com/thosakwe/vim-flutter</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/my_plugins/</div><div class="line">git clone https://github.com/thosakwe/vim-flutter.git</div></pre></td></tr></table></figure>
+<p>flutter run<br><img src="/img/flutterrun.gif" alt="vim"></p>
+<p>热加载<br><img src="/img/hot.gif" alt="vim"></p>
+<p>3，最后一个大招，设置 snipper：<br><a href="https://github.com/honza/vim-snippets" target="_blank" rel="external">https://github.com/honza/vim-snippets</a></p>
+<p>这个在之前的 vimrc 里面已经存在了，只要到 .vim_runtime 目录下更改就可以了。<br>为了让这个插件 与 YouCompleteMe 共存，需要改一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">vim ~/.vim_runtime/vimrc/plugins_config.vim</div><div class="line">#添加(这是从 stackoverflow 上拿到的一段代码)：</div><div class="line">function! g:UltiSnips_Complete()</div><div class="line">    call UltiSnips#ExpandSnippet()</div><div class="line">    if g:ulti_expand_res == 0</div><div class="line">        if pumvisible()</div><div class="line">            return &quot;\&lt;C-n&gt;&quot;</div><div class="line">        else</div><div class="line">            call UltiSnips#JumpForwards()</div><div class="line">            if g:ulti_jump_forwards_res == 0</div><div class="line">               return &quot;\&lt;TAB&gt;&quot;</div><div class="line">            endif</div><div class="line">        endif</div><div class="line">    endif</div><div class="line">    return &quot;&quot;</div><div class="line">endfunction</div><div class="line"></div><div class="line">au BufEnter * exec &quot;inoremap &lt;silent&gt; &quot; . g:UltiSnipsExpandTrigger . &quot; &lt;C-R&gt;=g:UltiSnips_Complete()&lt;cr&gt;&quot;</div><div class="line">let g:UltiSnipsJumpForwardTrigger=&quot;&lt;tab&gt;&quot;</div><div class="line">let g:UltiSnipsListSnippets=&quot;&lt;c-e&gt;&quot;</div><div class="line">&quot; this mapping Enter key to &lt;C-y&gt; to chose the current highlight item</div><div class="line">&quot; and close the selection list, same as other IDEs.</div><div class="line">&quot; CONFLICT with some plugins like tpope/Endwise</div><div class="line">inoremap &lt;expr&gt; &lt;CR&gt; pumvisible() ? &quot;\&lt;C-y&gt;&quot; : &quot;\&lt;C-g&gt;u\&lt;CR&gt;&quot;</div></pre></td></tr></table></figure>
+<p>添加 snipper:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim_runtime/sources_non_forked/vim-snippets/snippets</div><div class="line">vim dart.snippers</div><div class="line">#添加</div><div class="line">snippet stl</div><div class="line">	import &apos;package:flutter/material.dart&apos;;</div><div class="line">	class $&#123;1:NAME&#125; extends StatelessWidget &#123;</div><div class="line">		$&#123;0:$1&#125;(&#123;Key key&#125;): super(key: key);</div><div class="line">		@override</div><div class="line">		Widget build(BuildContext context) &#123;</div><div class="line">			return new Container();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">snippet stf</div><div class="line">	import &apos;package:flutter/material.dart&apos;;</div><div class="line">	class $&#123;1:NAME&#125; extends StatefulWidget &#123;</div><div class="line">		$&#123;0:$1&#125;(&#123;Key key&#125;) : super(key: key);</div><div class="line">		@override</div><div class="line">		_$&#123;0:$1&#125;State createState() =&gt; _$&#123;0:$1&#125;State();</div><div class="line">	&#125;</div><div class="line">	class _$&#123;0:$1&#125;State extends State&lt;$&#123;0:$1&#125;&gt; &#123;</div><div class="line">		dispose()&#123;</div><div class="line">			super.dispose();</div><div class="line">		&#125;</div><div class="line">		initState()&#123;</div><div class="line">			super.initState();</div><div class="line">		&#125;</div><div class="line">		@override</div><div class="line">		Widget build(BuildContext context) &#123;</div><div class="line">			return new Container();</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>最后的运行效果<br><img src="/img/snipper.gif" alt="vim"></p>
+<p>就这么多了，感觉用起来还是挺爽的。如果是审查元素的话，估计要切回官方推荐的 ide 了，至少现在我还没有发现有什么好的办法。</p>
+
+      
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dart</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">rest</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yangf.vip/2019/06/15/Flutter开发之vim环境/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/实现简单go-web框架/" class="archive-article-date">
-  	<time datetime="2017-07-04T07:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/实现简单go-web框架/">实现简单go web框架</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">rest</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/02/flutter-web开发实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">flutter_web开发实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+  <!--<section id="comments" class="article-nav article" style="background-color: #eaeaea;border-width:0px;">
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2138062"></script>
+  </section>-->
+
+  <section id="comments">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <div class="gitalk" id="comment_gitalk"></div>
+    <script>
+    var gitalk = new Gitalk({
+      clientID: '7752d4487dfa8d4aa4c1',
+      clientSecret: '83659c557114e040a48a5a979e7b53abd20faf1b',
+      repo: 'yang-f.github.io',
+      owner: 'yang-f',
+      admin: ['yang-f'],
+      id: 'Flutter开发之vim环境',      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+
+    gitalk.render('comment_gitalk')
+    </script>
+  </section>
+
+  
 
 
           </div>
@@ -374,9 +439,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
