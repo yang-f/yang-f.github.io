@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="FLYING的博客">
 <meta property="og:description" content="最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。 安装 flutter_web 构建工具：1flutter pub global activate webdev 这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：123pub global deactivate webd">
 <meta property="og:image" content="https://yangf.vip/img/code.png">
-<meta property="og:updated_time" content="2019-06-02T15:09:38.499Z">
+<meta property="og:updated_time" content="2019-07-15T04:35:38.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter_web开发实践">
 <meta name="twitter:description" content="最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。 安装 flutter_web 构建工具：1flutter pub global activate webdev 这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：123pub global deactivate webd">
@@ -221,22 +221,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/img/code.png" alt="FLYING"></p>
-<p>最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。<br> 安装 flutter_web 构建工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter pub global activate webdev</div></pre></td></tr></table></figure></p>
-<p>这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pub global deactivate webdev</div><div class="line">pub global activate webdev 2.0.6</div><div class="line">flutter/flutter_web</div></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/flutter/flutter_web" target="_blank" rel="external">flutter_web</a><br>这里是官方 flutter_web 的 GitHub 地址，我们把这个项目 clone 到本地：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd examples/hello_world/</div><div class="line">flutter pub upgrade</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
+<p>最近  Flutter 刚刚宣布可以支持 web 开发，迫不及待的想要尝尝鲜，正好最近有开发一个网站的计划，直接开始吧。<br> 安装 flutter_web 构建工具：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flutter pub global activate webdev</div></pre></td></tr></table></figure></p>
+<p>这里有个坑，会出现 webdev 版本 与 flutter 版本 不匹配的情况，可以重新激活一下指定版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pub global deactivate webdev</div><div class="line">pub global activate webdev 2.0.6</div><div class="line">flutter/flutter_web</div></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/flutter/flutter_web" target="_blank" rel="external">flutter_web</a><br>这里是官方 flutter_web 的 GitHub 地址，我们把这个项目 clone 到本地：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> examples/hello_world/</div><div class="line">flutter pub upgrade</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
 <p>访问 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://localhost:8080</div></pre></td></tr></table></figure></p>
 <p>就可以看到 hello world! 的页面了。</p>
-<p>那么就开始新建一个项目吧，官方推荐 VS Code 和 IntelliJ 创建项目，鉴于之前刚刚从 VS Code 脱坑，不想折腾，想使用 command 直接创建，奈何没有找到方式，官方貌似也没有相关的说明，那就将 GitHub 上的 hello world 拿过来开始吧，我的项目名称叫 nishihouziqinglaidedoubima_fe(哈哈：你是猴子请来的逗比吗)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir nishihouziqinglaidedoubima_fe</div><div class="line">cd nishihouziqinglaidedoubima_fe</div><div class="line">cp xxx/flutter_web/examples/hello_web/* ./</div></pre></td></tr></table></figure></p>
+<p>那么就开始新建一个项目吧，官方推荐 VS Code 和 IntelliJ 创建项目，鉴于之前刚刚从 VS Code 脱坑，不想折腾，想使用 command 直接创建，奈何没有找到方式，官方貌似也没有相关的说明，那就将 GitHub 上的 hello world 拿过来开始吧，我的项目名称叫 nishihouziqinglaidedoubima_fe(哈哈：你是猴子请来的逗比吗)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir nishihouziqinglaidedoubima_fe</div><div class="line"><span class="built_in">cd</span> nishihouziqinglaidedoubima_fe</div><div class="line">cp xxx/flutter_web/examples/hello_web/* ./</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>做一下小改动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">-&gt;pubspec.yaml</div><div class="line"></div><div class="line">name: nishihouziqinglaidedoubima_fe</div><div class="line"></div><div class="line">environment:</div><div class="line">  # You must be using Flutter &gt;=1.5.0 or Dart &gt;=2.3.0</div><div class="line">  sdk: &apos;&gt;=2.3.0-dev.0.1 &lt;3.0.0&apos;</div><div class="line"></div><div class="line">dependencies:</div><div class="line">  flutter_web: any</div><div class="line">  flutter_web_ui: any</div><div class="line"></div><div class="line">dev_dependencies:</div><div class="line">  build_runner: ^1.4.0</div><div class="line">  build_web_compilers: ^2.0.0</div><div class="line"></div><div class="line">dependency_overrides:</div><div class="line">  flutter_web:</div><div class="line">    git:</div><div class="line">      url: flutter/flutter_web</div><div class="line">      path: packages/flutter_web</div><div class="line">  flutter_web_ui:</div><div class="line">    git:</div><div class="line">      url: flutter/flutter_web</div><div class="line">      path: packages/flutter_web_ui</div></pre></td></tr></table></figure></p>
-<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pub get</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pub get</div><div class="line">webdev serve</div></pre></td></tr></table></figure></p>
 <p>就可以了，这里可能会遇到找不到自己定义 package 的情况，查看 .packages 最后一行，看看是不是跟自己项目的包名一致，不一致则改之，我的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nishihouziqinglaidedoubima_fe:lib/</div></pre></td></tr></table></figure></p>
-<p>然后就可以愉快的玩耍了。<br>跟移动端不同的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//移动端:</div><div class="line">import &apos;package:flutter/material.dart&apos;;</div><div class="line">//web 端:</div><div class="line">import &apos;package:flutter_web/material.dart&apos;;</div></pre></td></tr></table></figure></p>
-<p>然后就没有什么不同啦。<br>写个自动发布的脚本吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-&gt; deploy.sh</div><div class="line"></div><div class="line">webdev build</div><div class="line"></div><div class="line">cp -r build/* cache/</div><div class="line">cd cache/</div><div class="line">git pull</div><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m &apos;:robot: auto deploy&apos;</div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>然后就可以愉快的玩耍了。<br>跟移动端不同的是：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//移动端:</span></div><div class="line"><span class="keyword">import</span> <span class="string">'package:flutter/material.dart'</span>;</div><div class="line"><span class="comment">//web 端:</span></div><div class="line"><span class="keyword">import</span> <span class="string">'package:flutter_web/material.dart'</span>;</div></pre></td></tr></table></figure></p>
+<p>然后就没有什么不同啦。<br>写个自动发布的脚本吧：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-&gt; deploy.sh</div><div class="line"></div><div class="line">webdev build</div><div class="line"></div><div class="line">cp -r build/* cache/</div><div class="line"><span class="built_in">cd</span> cache/</div><div class="line">git pull</div><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m <span class="string">':robot: auto deploy'</span></div><div class="line">git push</div></pre></td></tr></table></figure></p>
 <p>之后也遇到几个坑：<br>1，网页 title 设置<br>一开始直觉是更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-&gt;web/index.html</div></pre></td></tr></table></figure></p>
-<p>里面的 title 但是页面打开之后瞬间就会被覆盖，发现需要在 dart 文件里面添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">return MaterialApp(</div><div class="line">  title: &apos;你是猴子请来的逗比吗?&apos;,  //这里</div><div class="line">  onGenerateRoute: (RouteSettings settings) &#123;</div><div class="line">    switch (settings.name) &#123;</div><div class="line">      case AppRoute.ROOT:</div><div class="line">        return new CustomRoute(</div><div class="line">          builder: (_) =&gt; new HomePage(),</div><div class="line">          settings: settings,</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>里面的 title 但是页面打开之后瞬间就会被覆盖，发现需要在 dart 文件里面添加：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> MaterialApp(</div><div class="line">  title: <span class="string">'你是猴子请来的逗比吗?'</span>,  <span class="comment">//这里</span></div><div class="line">  onGenerateRoute: (RouteSettings settings) &#123;</div><div class="line">    <span class="keyword">switch</span> (settings.name) &#123;</div><div class="line">      <span class="keyword">case</span> AppRoute.ROOT:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomRoute(</div><div class="line">          builder: (_) =&gt; <span class="keyword">new</span> HomePage(),</div><div class="line">          settings: settings,</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">);</div></pre></td></tr></table></figure></p>
 <p>2，图片加载<br>按移动端的方式是更改 pubspec.yaml ，但试过之后无效，正确的做法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd web</div><div class="line">mkdir assets</div><div class="line">mv xxx/your.png ./</div></pre></td></tr></table></figure></p>
-<p>引用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image: new DecorationImage(</div><div class="line">  image: new AssetImage(&apos;your.png&apos;),</div><div class="line">),</div></pre></td></tr></table></figure></p>
+<p>引用方式：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image: <span class="keyword">new</span> DecorationImage(</div><div class="line">  image: <span class="keyword">new</span> AssetImage(<span class="string">'your.png'</span>),</div><div class="line">),</div></pre></td></tr></table></figure></p>
 <p>说一下我正在开发的这个项目<br><a href="https://github.com/yang-f/nishihouziqinglaidedoubima_fe" target="_blank" rel="external">nishihouziqinglaidedoubima_fe</a><br>致力于实现一个逗比程序员社区，分享程序员才能懂的段子，笑话，知识点。对这个项目赶兴趣的朋友可以联系我: yangf.code@gmail.com<br>或许我们可以一起做点不一样的事情。<br>网站地址：<br><a href="https://nishihouziqinglaidedoubima.com" target="_blank" rel="external">你是猴子请来的逗比吗</a><br>ps: 这个项目只是前端部分，暂时依赖于 GitHub pages，后端还没有想好怎么实现。</p>
 
       
@@ -583,10 +583,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
@@ -595,7 +591,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,14 +616,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">object-c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oc</a>
               </li>
              
               <li class="article-tag-list-item">
