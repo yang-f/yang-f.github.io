@@ -199,6 +199,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Flutter开发之-项目实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/01/Flutter开发之-项目实践/">Flutter开发之-项目实践</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/01/Flutter开发之-项目实践/" class="archive-article-date">
+  	<time datetime="2019-08-01T05:43:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/p220172656.jpg" alt="吃鱼的日子不吃肉"> </p>
+<p>最近使用 <code>Flutter</code> 实现了一个小的项目，分享一下；</p>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>运行环境：wangpos, 实际为 <code>Android-5.1.1</code><br>这个项目是重构的一个已经存在的项目，之前的项目使用 <code>Android 原生 + Webview</code> 混合开发的方式实现；<br>缺点如下：<br>1,需要嵌入浏览器内核到 <code>apk</code>，导致安装包的大小增加了 <code>n*10M</code>;<br>2,嵌入的浏览器内核对 <code>css</code> 的支持并不是特别完美，特别是一些新的特性，导致兼容性有一些问题；<br>3,代码相当于 <code>public</code> 的，意味着一些敏感信息写在代码里面会有顾虑；<br>优点：<br>1,可以无感知的更新版本;</p>
+<p>正好 <code>Google</code> 正式发布了 <code>Flutter</code>，似乎上面的缺点可以完美解决，并保留优点（当时 <code>Google</code> 明确表示可以支持热更新，可惜后来叫停了，感觉上了贼船）,于是决定使用 <code>Flutter</code> 来重写；</p>
+<p>下面介绍一下具体的实现：</p>
+<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>项目的状态管理是应该优先考虑的问题，如果状态管理没有考虑好，我们的项目往往会随着规模的扩大，复杂度的提升，慢慢的变得混乱，腐败；官方推荐的方式是 <code>Bloc(Bussiness Logic Component)</code> ,同时也查看了其它的一些实现，比如 <a href="https://github.com/alibaba/fish-redux" target="_blank" rel="external"><code>fish-redux</code></a>，最后还是发现 <code>Bloc</code> 的学习曲线比较平缓，借助于 <code>Dart</code> 的 <code>Stream</code> 和 <code>Sinks</code>，个人可以不借助第三方的框架或者 <code>package</code> 轻松的实现(实际用的是 <a href="https://github.com/ReactiveX/rxdart" target="_blank" rel="external">RxDart</a>, 一个对 <code>Stream</code> 和 <code>Sinks</code> 的封装)；</p>
+<p><img src="/img/1_WJMUsjhRqwj40NQ7ovWJYw.png" alt="bloc"></p>
+<p>就像上图所示，<code>widget</code> 可以发送指令到 <code>Bloc</code>,  并且监听 <code>Sream</code> 获取状态变化，这样我们就可以很容易的将 <code>业务逻辑</code> 和 <code>UI</code> 分离开<br>
+        
+          <a class="article-more-a" href="/2019/08/01/Flutter开发之-项目实践/#more">more >></a>
+        
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dart</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter - develop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/01/Flutter开发之-项目实践/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Flutter开发之为svg开发ImageProvider" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -224,15 +306,9 @@
 <p>一开始的使用还算顺利，直到遇到了一个需求，需要设置 <code>Container</code> 的 <code>DecorationImage</code>，但是 <code>DecorationImage</code> 的 <code>image</code> 参数需要一个 <code>ImageProvider</code>:<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// The image to be painted into the decoration.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// Typically this will be an [AssetImage] (for an image shipped with the</span></div><div class="line"><span class="comment">/// application) or a [NetworkImage] (for an image obtained from the network).</span></div><div class="line"><span class="keyword">final</span> ImageProvider image;</div></pre></td></tr></table></figure></p>
 <p>使用正常图片是没有问题的，但是如果能支持<code>svg</code> 的话岂不是很美，所以研究了一下 <code>fluter_svg</code> 这个 package，发现并没有提供相关的方法来调用，而且网上也没有相关的实现，那就只能自己动手，丰衣足食了。<br>先看看 <code>ImageProvider</code> 是个什么东东：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageProvider</span>&lt;<span class="title">T</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>是个 <code>abstract class</code> ，似乎是个不错的信号，这意味着只要 <code>extends ImageProvide</code> 就可以作为参数传递进去了。那就先看看 <code>Image</code> 这个 <code>Widget</code> 是怎么实现的吧：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Image.memory(</div><div class="line">    Uint8List bytes, &#123;</div><div class="line">    Key key,</div><div class="line">    <span class="built_in">double</span> scale = <span class="number">1.0</span>,</div><div class="line">    <span class="keyword">this</span>.semanticLabel,</div><div class="line">    <span class="keyword">this</span>.excludeFromSemantics = <span class="keyword">false</span>,</div><div class="line">    <span class="keyword">this</span>.width,</div><div class="line">    <span class="keyword">this</span>.height,</div><div class="line">    <span class="keyword">this</span>.color,</div><div class="line">    <span class="keyword">this</span>.colorBlendMode,</div><div class="line">    <span class="keyword">this</span>.fit,</div><div class="line">    <span class="keyword">this</span>.alignment = Alignment.center,</div><div class="line">    <span class="keyword">this</span>.repeat = ImageRepeat.noRepeat,</div><div class="line">    <span class="keyword">this</span>.centerSlice,</div><div class="line">    <span class="keyword">this</span>.matchTextDirection = <span class="keyword">false</span>,</div><div class="line">    <span class="keyword">this</span>.gaplessPlayback = <span class="keyword">false</span>,</div><div class="line">    <span class="keyword">this</span>.filterQuality = FilterQuality.low,</div><div class="line">  &#125;) : image = MemoryImage(bytes, scale: scale),</div><div class="line">       <span class="keyword">assert</span>(alignment != <span class="keyword">null</span>),</div><div class="line">       <span class="keyword">assert</span>(repeat != <span class="keyword">null</span>),</div><div class="line">       <span class="keyword">assert</span>(matchTextDirection != <span class="keyword">null</span>),</div><div class="line">       <span class="keyword">super</span>(key: key);</div></pre></td></tr></table></figure></p>
-<p>这个是 <code>Image</code>  其中一个构造函数，其中把 <code>MemoryImage</code> 赋值给了 <code>image</code> 这个参数，嗯，看看 这个 <code>MemoryImage</code>  是个什么东东吧：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Decodes the given [Uint8List] buffer as an image, associating it with the</span></div><div class="line"><span class="comment">/// given scale.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// The provided [bytes] buffer should not be changed after it is provided</span></div><div class="line"><span class="comment">/// to a [MemoryImage]. To provide an [ImageStream] that represents an image</span></div><div class="line"><span class="comment">/// that changes over time, consider creating a new subclass of [ImageProvider]</span></div><div class="line"><span class="comment">/// whose [load] method returns a subclass of [ImageStreamCompleter] that can</span></div><div class="line"><span class="comment">/// handle providing multiple images.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// See also:</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">///  * [Image.memory] for a shorthand of an [Image] widget backed by [MemoryImage].</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MemoryImage</span> <span class="keyword">extends</span> <span class="title">ImageProvider</span>&lt;<span class="title">MemoryImage</span>&gt; </span>&#123;</div><div class="line">  <span class="comment">/// Creates an object that decodes a [Uint8List] buffer as an image.</span></div><div class="line">  <span class="comment">///</span></div><div class="line">  <span class="comment">/// The arguments must not be null.</span></div><div class="line">  <span class="keyword">const</span> MemoryImage(<span class="keyword">this</span>.bytes, &#123; <span class="keyword">this</span>.scale = <span class="number">1.0</span> &#125;)</div><div class="line">    : <span class="keyword">assert</span>(bytes != <span class="keyword">null</span>),</div><div class="line">      <span class="keyword">assert</span>(scale != <span class="keyword">null</span>);</div><div class="line"></div><div class="line">  <span class="comment">/// The bytes to decode into an image.</span></div><div class="line">  <span class="keyword">final</span> Uint8List bytes;</div><div class="line"></div><div class="line">  <span class="comment">/// The scale to place in the [ImageInfo] object of the image.</span></div><div class="line">  <span class="keyword">final</span> <span class="built_in">double</span> scale;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  Future&lt;MemoryImage&gt; obtainKey(ImageConfiguration configuration) &#123;</div><div class="line">    <span class="keyword">return</span> SynchronousFuture&lt;MemoryImage&gt;(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  ImageStreamCompleter load(MemoryImage key) &#123;</div><div class="line">    <span class="keyword">return</span> MultiFrameImageStreamCompleter(</div><div class="line">      codec: _loadAsync(key),</div><div class="line">      scale: key.scale,</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  Future&lt;ui.Codec&gt; _loadAsync(MemoryImage key) &#123;</div><div class="line">    <span class="keyword">assert</span>(key == <span class="keyword">this</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> PaintingBinding.instance.instantiateImageCodec(bytes);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">bool</span> <span class="keyword">operator</span> ==(<span class="keyword">dynamic</span> other) &#123;</div><div class="line">    <span class="keyword">if</span> (other.runtimeType != runtimeType)</div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">final</span> MemoryImage typedOther = other;</div><div class="line">    <span class="keyword">return</span> bytes == typedOther.bytes</div><div class="line">        &amp;&amp; scale == typedOther.scale;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">int</span> <span class="keyword">get</span> hashCode =&gt; hashValues(bytes.hashCode, scale);</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">String</span> toString() =&gt; <span class="string">'$runtimeType(<span class="subst">$&#123;describeIdentity(bytes)&#125;</span>, scale: $scale)'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>哎呦不错哦，果然是 <code>extends</code>  的 <code>ImageProvider</code>，哈哈，那我们就按照这个仿造一个我们自己的 <code>ImageProvider</code>吧：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Svg</span> <span class="keyword">extends</span> <span class="title">ImageProvider</span>&lt;<span class="title">Svg</span>&gt; </span>&#123;</div><div class="line">  <span class="keyword">const</span> Svg(<span class="keyword">this</span>.asset, &#123;<span class="keyword">this</span>.scale = <span class="number">1.0</span>&#125;)</div><div class="line">      : <span class="keyword">assert</span>(asset != <span class="keyword">null</span>),</div><div class="line">        <span class="keyword">assert</span>(scale != <span class="keyword">null</span>);</div><div class="line"></div><div class="line">  <span class="keyword">final</span> <span class="built_in">double</span> scale;</div><div class="line"></div><div class="line">  <span class="comment">/// 因为希望可以从 asset 直接创建一个 svg 的 ImageProvider</span></div><div class="line">  <span class="comment">/// 所以将其中一个参数定义未 asset path;</span></div><div class="line">  <span class="keyword">final</span> <span class="built_in">String</span> asset;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  Future&lt;Svg&gt; obtainKey(ImageConfiguration configuration) &#123;</div><div class="line">    <span class="keyword">return</span> SynchronousFuture&lt;Svg&gt;(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  ImageStreamCompleter load(Svg key) &#123;</div><div class="line">    <span class="keyword">return</span> MultiFrameImageStreamCompleter(</div><div class="line">      codec: _loadAsync(key),</div><div class="line">      scale: key.scale,</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  Future&lt;ui.Codec&gt; _loadAsync(Svg key) &#123;</div><div class="line">    <span class="keyword">assert</span>(key == <span class="keyword">this</span>);</div><div class="line"></div><div class="line">    <span class="comment">/// 先在的问题就变成了怎么将一个 svg 的 asset path</span></div><div class="line">    <span class="comment">/// 转变成为 bytes, 这里的 bytes 是一个 uint8list</span></div><div class="line">    <span class="keyword">return</span> PaintingBinding.instance</div><div class="line">        .instantiateImageCodec(bytes);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">bool</span> <span class="keyword">operator</span> ==(<span class="keyword">dynamic</span> other) &#123;</div><div class="line">    <span class="keyword">if</span> (other.runtimeType != runtimeType) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">final</span> Svg typedOther = other;</div><div class="line">    <span class="keyword">return</span> asset == typedOther.asset &amp;&amp; scale == typedOther.scale;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">int</span> <span class="keyword">get</span> hashCode =&gt; hashValues(asset.hashCode, scale);</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="built_in">String</span> toString() =&gt;</div><div class="line">      <span class="string">'$runtimeType(<span class="subst">$&#123;describeIdentity(asset)&#125;</span>, scale: $scale)'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>像注释里面说的，现在的问题变成了怎么将  <code>svg asset</code> 变成一个 <code>uint8list</code> ，貌似这个需要从 <code>flutter_svg</code> 这个 <code>package</code> 寻找答案了，看了下文档，果然不负众望：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'package:flutter_svg/flutter_svg.dart'</span>;</div><div class="line"><span class="keyword">final</span> <span class="built_in">String</span> rawSvg = <span class="string">'''&lt;svg viewBox="..."&gt;...&lt;/svg&gt;'''</span>;</div><div class="line"><span class="keyword">final</span> DrawableRoot svgRoot = <span class="keyword">await</span> svg.fromSvgString(rawSvg, rawSvg);</div><div class="line"></div><div class="line"><span class="comment">// If you only want the final Picture output, just use</span></div><div class="line"><span class="keyword">final</span> Picture picture = svgRoot.toPicture();</div><div class="line"> 这个 Picture 又是个啥呢？是 dart:ui 里面的一个对象，看看它可以做什么:</div><div class="line"><span class="comment">/// Creates an image from this picture.</span></div><div class="line">  <span class="comment">///</span></div><div class="line">  <span class="comment">/// The picture is rasterized using the number of pixels specified by the</span></div><div class="line">  <span class="comment">/// given width and height.</span></div><div class="line">  <span class="comment">///</span></div><div class="line">  <span class="comment">/// Although the image is returned synchronously, the picture is actually</span></div><div class="line">  <span class="comment">/// rasterized the first time the image is drawn and then cached.</span></div><div class="line">  Future&lt;Image&gt; toImage(<span class="built_in">int</span> width, <span class="built_in">int</span> height) &#123;</div><div class="line">    <span class="keyword">if</span> (width &lt;= <span class="number">0</span> || height &lt;= <span class="number">0</span>)</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">'Invalid image dimensions.'</span>);</div><div class="line">    <span class="keyword">return</span> _futurize(</div><div class="line">      (_Callback&lt;Image&gt; callback) =&gt; _toImage(width, height, callback)</div><div class="line">    );</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>这个似乎可以转变成一个 <code>Image</code> 这个 <code>Image</code> 是 <code>dart:ui</code> 的对象，继续看看它能做什么：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Converts the [Image] object into a byte array.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// The [format] argument specifies the format in which the bytes will be</span></div><div class="line"><span class="comment">/// returned.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// Returns a future that completes with the binary image data or an error</span></div><div class="line"><span class="comment">/// if encoding fails.</span></div><div class="line">Future&lt;ByteData&gt; toByteData(&#123;ImageByteFormat format: ImageByteFormat.rawRgba&#125;) &#123;</div><div class="line">  <span class="keyword">return</span> _futurize((_Callback&lt;ByteData&gt; callback) &#123;</div><div class="line">    <span class="keyword">return</span> _toByteData(format.index, (Uint8List encoded) &#123;</div><div class="line">      callback(encoded?.buffer?.asByteData());</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>完美，所以思路很明朗了:<br>1，读取 <code>svg</code> 的内容；<br>2，调用 <code>flutter_svg</code> 提供的方法转变为 <code>Picture</code>；<br>3，将 <code>Picture</code> 转为 <code>Image</code>；<br>4，通过 <code>Image</code> 获取 <code>ByteData</code>；<br>5，将 <code>ByteData</code> 转为 <code>Uint8List</code>；<br><code>_loadAsync</code> 就可以实现了：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Future&lt;ui.Codec&gt; _loadAsync(AssetSvg key) <span class="keyword">async</span> &#123;</div><div class="line">    <span class="keyword">assert</span>(key == <span class="keyword">this</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> rawSvg = <span class="keyword">await</span> rootBundle.loadString(asset);</div><div class="line">    <span class="keyword">final</span> DrawableRoot svgRoot = <span class="keyword">await</span> svg.fromSvgString(rawSvg, rawSvg);</div><div class="line">    <span class="keyword">final</span> ui.Picture picture = svgRoot.toPicture(</div><div class="line">      size: Size(</div><div class="line">        width.toDouble(),</div><div class="line">        height.toDouble(),</div><div class="line">      ),</div><div class="line">      clipToViewBox: <span class="keyword">false</span>,</div><div class="line">    );</div><div class="line">    <span class="keyword">final</span> ui.Image image = <span class="keyword">await</span> picture.toImage(width, height);</div><div class="line">    <span class="keyword">var</span> imageData = <span class="keyword">await</span> image.toByteData(format: ui.ImageByteFormat.png);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> PaintingBinding.instance</div><div class="line">        .instantiateImageCodec(imageData.buffer.asUint8List());</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>这样终于就可以实现我们想要的效果了：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Image(image:Svg(<span class="string">'xxx.svg'</span>));</div><div class="line">DecorationImage(image:Svg(<span class="string">'xxx.svg'</span>));</div></pre></td></tr></table></figure></p>
-<h1 id="完整代码可以查看"><a href="#完整代码可以查看" class="headerlink" title="完整代码可以查看"></a>完整代码可以查看</h1><p><a href="https://github.com/yang-f/flutter_svg_provider" target="_blank" rel="external">https://github.com/yang-f/flutter_svg_provider</a></p>
-<p>现在因为知道怎么实现去复盘思路，看起来还好，实际颇费了些周折，应该是可以帮到有这样需求的人，免得再像我似的苦逼哈哈的研读源码，就这么多了。</p>
-
+        
+          <a class="article-more-a" href="/2019/06/23/Flutter开发之为svg开发ImageProvider/#more">more >></a>
+        
       
       
     </div>
@@ -970,97 +1046,9 @@
 
 
   
-    <article id="post-GCD-block中变量总被回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/15/GCD-block中变量总被回收/">GCD block中变量总被回收</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/15/GCD-block中变量总被回收/" class="archive-article-date">
-  	<time datetime="2017-07-15T03:10:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/p220172661.jpg" alt="FLYING"><br>最近遇到了一个很奇葩的问题，使用GCD开启一个线程队列<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">__block  NSMutableDictionary *dict=[NSMutableDictionary dictionary];</div><div class="line">dispatch_async(<span class="built_in">queue</span>, ^&#123;</div><div class="line">    NSObject *obj = ...;</div><div class="line">    [dict setObject:obj forKey:@<span class="string">"xxx"</span>];</div><div class="line">&#125;);</div><div class="line"><span class="comment">//等待队列执行完毕，访问存储到dict中的对象</span></div><div class="line">...</div><div class="line">dict[@<span class="string">"xxx"</span>];<span class="comment">//这时却被回收了</span></div></pre></td></tr></table></figure></p>
-<p>wtf，继续调查，发现block分为三种：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_NSConcretStackBlock</div><div class="line">_NSConcretGlobalBlock</div><div class="line">_NSConcretMallocBlock</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2017/07/15/GCD-block中变量总被回收/#more">more >></a>
-        
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Xcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">block</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存管理</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Object C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/15/GCD-block中变量总被回收/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1166,6 +1154,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter - develop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
@@ -1230,15 +1222,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iOS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
