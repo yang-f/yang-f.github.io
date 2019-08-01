@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://yangf.vip/img/1_WJMUsjhRqwj40NQ7ovWJYw.png">
 <meta property="og:image" content="https://yangf.vip/img/inspector.gif">
 <meta property="og:image" content="https://yangf.vip/img/doc.png">
-<meta property="og:updated_time" content="2019-08-01T09:33:46.403Z">
+<meta property="og:updated_time" content="2019-08-01T09:37:35.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter开发之-项目实践">
 <meta name="twitter:description" content="最近使用 Flutter 实现了一个小的项目，分享一下； 项目背景运行环境：wangpos, 实际为 Android-5.1.1这个项目是重构的一个已经存在的项目，之前的项目使用 Android 原生 + Webview 混合开发的方式实现；缺点如下：1,需要嵌入浏览器内核到 apk，导致安装包的大小增加了 n*10M;2,嵌入的浏览器内核对 css 的支持并不是特别完美，特别是一些新的特性，">
@@ -257,7 +257,8 @@
 <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><p>将所有的命令集中写到 <code>Makefile</code> 里面，避免祖传命令的出现。</p>
 <h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h4 id="border-image-效果"><a href="#border-image-效果" class="headerlink" title="border-image 效果"></a>border-image 效果</h4><p>可以使用 <code>Container</code> 的 <code>decoration</code> 属性来实现<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">decoration: <span class="keyword">new</span> BoxDecoration(</div><div class="line">  image: <span class="keyword">new</span> DecorationImage(</div><div class="line">    fit: BoxFit.fill,</div><div class="line">    centerSlice: widget.borderSlice,</div><div class="line">    image: widget.borderImage,</div><div class="line">  ),</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <h4 id="svg-使用-image-provide-的方式加载"><a href="#svg-使用-image-provide-的方式加载" class="headerlink" title="svg 使用 image provide 的方式加载"></a>svg 使用 image provide 的方式加载</h4><p>之前写过一个 <a href="https://yangf.vip/2019/06/23/Flutter%E5%BC%80%E5%8F%91%E4%B9%8B%E4%B8%BAsvg%E5%BC%80%E5%8F%91ImageProvider/">blog</a></p>
-<h2 id="以上"><a href="#以上" class="headerlink" title="以上"></a>以上</h2>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://flutter.dev/docs/development/data-and-backend/json" target="_blank" rel="external">https://flutter.dev/docs/development/data-and-backend/json</a><br><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages" target="_blank" rel="external">https://flutter.dev/docs/development/packages-and-plugins/developing-packages</a><br><a href="https://medium.com/flutter-community/why-use-rxdart-and-how-we-can-use-with-bloc-pattern-in-flutter-a64ca2c7c52d" target="_blank" rel="external">https://medium.com/flutter-community/why-use-rxdart-and-how-we-can-use-with-bloc-pattern-in-flutter-a64ca2c7c52d</a><br><a href="https://github.com/felangel/bloc" target="_blank" rel="external">https://github.com/felangel/bloc</a><br><a href="https://github.com/ReactiveX/rxdart" target="_blank" rel="external">https://github.com/ReactiveX/rxdart</a><br><a href="https://github.com/dart-lang/dartdoc" target="_blank" rel="external">https://github.com/dart-lang/dartdoc</a><br><a href="https://github.com/fastlane/fastlane" target="_blank" rel="external">https://github.com/fastlane/fastlane</a><br><a href="https://github.com/fluttercommunity/flutter_launcher_icons" target="_blank" rel="external">https://github.com/fluttercommunity/flutter_launcher_icons</a><br><a href="https://flutter.beer/" target="_blank" rel="external">https://flutter.beer/</a></p>
+
       
       
         <div class="page-reward">
@@ -533,11 +534,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
