@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://yangf.vip/img/1_WJMUsjhRqwj40NQ7ovWJYw.png">
 <meta property="og:image" content="https://yangf.vip/img/inspector.gif">
 <meta property="og:image" content="https://yangf.vip/img/doc.png">
-<meta property="og:updated_time" content="2019-08-01T09:37:35.768Z">
+<meta property="og:updated_time" content="2019-08-01T09:49:20.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter开发之-项目实践">
 <meta name="twitter:description" content="最近使用 Flutter 实现了一个小的项目，分享一下； 项目背景运行环境：wangpos, 实际为 Android-5.1.1这个项目是重构的一个已经存在的项目，之前的项目使用 Android 原生 + Webview 混合开发的方式实现；缺点如下：1,需要嵌入浏览器内核到 apk，导致安装包的大小增加了 n*10M;2,嵌入的浏览器内核对 css 的支持并不是特别完美，特别是一些新的特性，">
@@ -245,7 +245,7 @@
 <h2 id="异步资源的加载"><a href="#异步资源的加载" class="headerlink" title="异步资源的加载"></a>异步资源的加载</h2><p>因为 <code>Dart</code> 是单线程模型的，所以 <code>Dart</code> 里面比较耗时的操作如果是同步执行则会造成应用卡顿，所以我们会选择将一些操作异步来执行，<code>Dart</code> 里面的并发机制是使用的 <code>isolate</code>, 具体我还没有理解很透彻，不敢讲太多，怕误导大家，这里我说一下上文提到的异步资源的加载问题，我记得我在 <code>Flutter</code> github 提过一个 <code>issue</code>,官方给出的回复在使用之前提前加载,所以我的解决方案是提供一个全局的引用，并在  <code>main</code><br>函数里面初始化，完成之后执行 <code>runApp()</code><br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> main() <span class="keyword">async</span> &#123;</div><div class="line">  <span class="keyword">await</span> Config().init();</div><div class="line">  runApp(App());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>config.dart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Config &#123;</div><div class="line">  Config._internal() : super();</div><div class="line">  static final Config _instance = new Config._internal();</div><div class="line">  factory Config() =&gt; _instance;</div><div class="line"></div><div class="line">  SharedPreferences _prefs;</div><div class="line"></div><div class="line">  Future&lt;void&gt; init() async &#123;</div><div class="line">    _prefs = await SharedPreferences.getInstance();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  SharedPreferences get prefs &#123;</div><div class="line">    return _prefs;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>Config 是一个单例(这里有坑那，<code>Dart</code> 里面可没有什么饱汉式，饿汉式，之类的，只有一种，永远只在需要的时候才创建实例)，使用 <code>SharedPreferences</code> 可以:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Config().prefs</div></pre></td></tr></table></figure></p>
-<h2 id="Network-inspector"><a href="#Network-inspector" class="headerlink" title="Network inspector"></a>Network inspector</h2><p>我们在开发调试的阶段，特别的有网络请求的情况，需要查看请求的参数，以及返回的结果，如果每次都打印 <code>log</code> 出来好像也没有什么不妥，但是一个是耗费一定的精力，而是打印出来也不直观，这里推荐一个工具 <a href="https://github.com/brianegan/flutter_stetho" target="_blank" rel="external">flutter_stetho</a>，这个是基于 <code>Android Stetho</code> 实现的，我们可以在 <code>Chrome remotedevice</code> 里面查看:</p>
+<h2 id="Network-inspector"><a href="#Network-inspector" class="headerlink" title="Network inspector"></a>Network inspector</h2><p>我们在开发调试的阶段，特别的有网络请求的情况，需要查看请求的参数，以及返回的结果，如果每次都打印 <code>log</code> 出来好像也没有什么不妥，但是一个是耗费一定的精力，二是打印出来也不直观，这里推荐一个工具 <a href="https://github.com/brianegan/flutter_stetho" target="_blank" rel="external">flutter_stetho</a>，这个是基于 <code>Android Stetho</code> 实现的，我们可以在 <code>Chrome remotedevice</code> 里面查看:</p>
 <p><img src="/img/inspector.gif" alt="flutter_stetho"></p>
 <p>而且我们还可以在查看 <code>LocalStoage</code> 的情况,完美, 这里不知道 <code>iOS</code> 有没有好的办法来解决。</p>
 <h2 id="Launcher-Icons-splash-screen"><a href="#Launcher-Icons-splash-screen" class="headerlink" title="Launcher Icons / splash screen"></a>Launcher Icons / splash screen</h2><p>有个小工具可以设置 <code>Lancher Icons</code> 和 <code>splash screen</code>:<br>[flutter_launcher_icons]<a href="https://github.com/fluttercommunity/flutter_launcher_icons" target="_blank" rel="external">https://github.com/fluttercommunity/flutter_launcher_icons</a><br>直接在 <code>pubspec.yaml</code>设置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dev_dependencies:</div><div class="line">  flutter_test:</div><div class="line">    sdk: flutter</div><div class="line">  flutter_launcher_icons: &apos;^0.7.0&apos;</div><div class="line"></div><div class="line">flutter_icons:</div><div class="line">  ios: true</div><div class="line">  android: true</div><div class="line">  image_path_ios: &apos;graphics/logo/logo.png&apos;</div><div class="line">  image_path_android: &apos;graphics/logo/logo.png&apos;</div><div class="line">  adaptive_icon_background: &apos;graphics/logo/logo.png&apos;</div><div class="line">  adaptive_icon_foreground: &apos;graphics/logo/logo.png&apos;</div></pre></td></tr></table></figure></p>
@@ -526,11 +526,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter - develop</a>
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,7 +538,43 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter - develop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,42 +595,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ARC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">frame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">avframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CNAME</a>
               </li>
              
               <li class="article-tag-list-item">
