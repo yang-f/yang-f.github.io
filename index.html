@@ -199,6 +199,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-FlutterWeb开发之-版本升级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/FlutterWeb开发之-版本升级/">FlutterWeb开发之-版本升级</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/FlutterWeb开发之-版本升级/" class="archive-article-date">
+  	<time datetime="2019-09-16T07:23:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/doubi.png" alt="DOUBI"></p>
+<p>最近 <code>Flutter</code> 发布到了 <code>1.9</code> 版本了，已经将 <code>flutter_web</code> 合并到了主分支，所以就将我之前开始的 <code>web</code> 项目也升级到 <code>1.9</code> 吧，正好也感受一下新版本的 <code>Flutter</code>。</p>
+<p>我使用的是 <code>1.9.7</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">➜  nishihouziqinglaidedoubima_fe git:(master) flutter --version</div><div class="line">Flutter 1.9.7 • channel unknown • unknown <span class="built_in">source</span></div><div class="line">Framework • revision 4984d1a33d (3 weeks ago) • 2019-08-28 17:04:07 -0700</div><div class="line">Engine • revision f52c0b9270</div><div class="line">Tools • Dart 2.5.0</div></pre></td></tr></table></figure></p>
+<p>之前的 <code>pubspec.yaml</code> 是这样的：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="attr">name:</span> <span class="string">nishihouziqinglaidedoubima_fe</span></div><div class="line"></div><div class="line"><span class="attr">environment:</span></div><div class="line">  <span class="comment"># You must be using Flutter &gt;=1.5.0 or Dart &gt;=2.3.0</span></div><div class="line"><span class="attr">  sdk:</span> <span class="string">'&gt;=2.3.0-dev.0.1 &lt;3.0.0'</span></div><div class="line"></div><div class="line"><span class="attr">dependencies:</span></div><div class="line"><span class="attr">  flutter_web:</span> <span class="string">any</span></div><div class="line"><span class="attr">  flutter_web_ui:</span> <span class="string">any</span></div><div class="line"></div><div class="line"><span class="attr">dev_dependencies:</span></div><div class="line"><span class="attr">  build_runner:</span> <span class="string">^1.4.0</span></div><div class="line"><span class="attr">  build_web_compilers:</span> <span class="string">^2.0.0</span></div><div class="line"></div><div class="line"><span class="attr">dependency_overrides:</span></div><div class="line"><span class="attr">  flutter_web:</span></div><div class="line"><span class="attr">    git:</span></div><div class="line"><span class="attr">      url:</span> <span class="attr">https://github.com/flutter/flutter_web</span></div><div class="line"><span class="attr">      path:</span> <span class="string">packages/flutter_web</span></div><div class="line"><span class="attr">  flutter_web_ui:</span></div><div class="line"><span class="attr">    git:</span></div><div class="line"><span class="attr">      url:</span> <span class="attr">https://github.com/flutter/flutter_web</span></div><div class="line"><span class="attr">      path:</span> <span class="string">packages/flutter_web_ui</span></div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/09/16/FlutterWeb开发之-版本升级/#more">more >></a>
+        
+      
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dart</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/FlutterWeb开发之-版本升级/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Flutter开发之-项目实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -745,11 +828,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -966,86 +1049,6 @@
 
 
   
-    <article id="post-iOS应用抓包（http、https）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/21/iOS应用抓包（http、https）/">iOS应用抓包（http、https）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/21/iOS应用抓包（http、https）/" class="archive-article-date">
-  	<time datetime="2017-07-21T00:11:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很多时候，我们想要了解某个iOS应用API调用的方式，需要对手机进行抓包。<br>这里推荐使用Charles。<br>启动Charles：<br><img src="/img/charles.png" alt="FLYING"></p>
-<p>1,http抓包：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig</div></pre></td></tr></table></figure></p>
-<p>查看局域网pc端局域网IP，假设为192.168.1.101<br>手机端将proxy设置为：192.168.1.101:8888</p>
-<p><img src="/img/charles_valid.png" alt="FLYING"></p>
-<p>这样就可以抓到http的包了。</p>
-<p>2,https抓包：<br>
-        
-          <a class="article-more-a" href="/2017/07/21/iOS应用抓包（http、https）/#more">more >></a>
-        
-      
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Charles</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/技术/" class="article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/21/iOS应用抓包（http、https）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1154,11 +1157,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter - develop</a>
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter - develop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1190,22 +1197,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">framework</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
               </li>
              
@@ -1219,6 +1210,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">keyframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">framework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rest</a>
               </li>
              
               <li class="article-tag-list-item">
